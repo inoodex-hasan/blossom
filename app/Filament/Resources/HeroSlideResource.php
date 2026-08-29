@@ -81,7 +81,8 @@ class HeroSlideResource extends Resource
                             ->maxSize(5120)
                             ->formatStateUsing(fn () => null)
                             ->dehydrated(fn ($state) => filled($state))
-                            ->helperText('Drag & drop or browse a 1920x800 high-res banner photo.')
+                            ->saveUploadedFileUsing(fn (\Illuminate\Http\UploadedFile $file): string => app(\App\Services\ImageService::class)->storeAsWebp($file, 'hero-slides', 1920, 85))
+                            ->helperText('Drag & drop or browse a 1920x800 banner photo (auto-optimized & converted to WebP).')
                             ->columnSpanFull()
                             ->hidden(fn (string $operation): bool => $operation === 'view')
                             ->required(fn (string $operation): bool => $operation === 'create'),

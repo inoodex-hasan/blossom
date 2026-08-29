@@ -131,7 +131,8 @@ class OurStoryResource extends Resource
                                     ->maxSize(5120)
                                     ->formatStateUsing(fn () => null)
                                     ->dehydrated(fn ($state) => filled($state))
-                                    ->helperText('Drag & drop or browse a new photo to replace the current banner.')
+                                    ->saveUploadedFileUsing(fn (\Illuminate\Http\UploadedFile $file): string => app(\App\Services\ImageService::class)->storeAsWebp($file, 'our-stories', 1920, 85))
+                                    ->helperText('Drag & drop or browse a photo (auto-optimized & converted to WebP).')
                                     ->columnSpanFull()
                                     ->hidden(fn (string $operation): bool => $operation === 'view')
                                     ->required(fn (string $operation): bool => $operation === 'create'),

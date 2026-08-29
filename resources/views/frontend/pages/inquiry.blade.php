@@ -16,6 +16,7 @@
 
             <form id="page-inquiry-form" action="{{ route('inquiry.store') }}" method="POST" class="space-y-4">
                 @csrf
+                @honeypot
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>

@@ -42,12 +42,13 @@ class Product extends Model
     }
 
     /**
-     * Get the accessible public URL for product image.
+     * Get the accessible public URL for product image (prioritizes optimized WebP).
      */
     public function getImageUrlAttribute(): string
     {
         if (empty($this->image)) {
-            return asset('assets/images/legumes.jpeg');
+            $defaultWebp = 'assets/images/legumes.webp';
+            return file_exists(public_path($defaultWebp)) ? asset($defaultWebp) : asset('assets/images/legumes.jpeg');
         }
 
         if (str_starts_with($this->image, 'http://') || str_starts_with($this->image, 'https://')) {
@@ -55,7 +56,16 @@ class Product extends Model
         }
 
         if (str_starts_with($this->image, 'assets/')) {
+            $webp = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $this->image);
+            if ($webp !== $this->image && file_exists(public_path($webp))) {
+                return asset($webp);
+            }
             return asset($this->image);
+        }
+
+        $webpStorage = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $this->image);
+        if ($webpStorage !== $this->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($webpStorage)) {
+            return asset('storage/' . $webpStorage);
         }
 
         return asset('storage/' . $this->image);

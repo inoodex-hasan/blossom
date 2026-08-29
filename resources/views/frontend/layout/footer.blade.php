@@ -107,6 +107,7 @@
 
         <form id="inquiry-form" action="{{ route('inquiry.store') }}" method="POST" class="px-5 sm:px-6 py-4 space-y-3">
             @csrf
+            @honeypot
 
             <!-- Section: Contact details -->
             <div class="bg-[#0EA5E9] text-white font-serif text-xs font-bold tracking-wide px-3 py-1.5 rounded">Contact Details</div>

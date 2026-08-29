@@ -30,12 +30,13 @@ class HeroSlide extends Model
     ];
 
     /**
-     * Get the accessible public URL for the hero image.
+     * Get the accessible public URL for the hero image (prioritizes optimized WebP).
      */
     public function getImageUrlAttribute(): string
     {
         if (empty($this->image)) {
-            return asset('assets/images/hero.jpeg');
+            $defaultWebp = 'assets/images/hero.webp';
+            return file_exists(public_path($defaultWebp)) ? asset($defaultWebp) : asset('assets/images/hero.jpeg');
         }
 
         if (str_starts_with($this->image, 'http://') || str_starts_with($this->image, 'https://')) {
@@ -43,7 +44,16 @@ class HeroSlide extends Model
         }
 
         if (str_starts_with($this->image, 'assets/')) {
+            $webp = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $this->image);
+            if ($webp !== $this->image && file_exists(public_path($webp))) {
+                return asset($webp);
+            }
             return asset($this->image);
+        }
+
+        $webpStorage = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $this->image);
+        if ($webpStorage !== $this->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($webpStorage)) {
+            return asset('storage/' . $webpStorage);
         }
 
         return asset('storage/' . $this->image);

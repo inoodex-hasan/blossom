@@ -88,7 +88,8 @@ class ProductResource extends Resource
                             ->maxSize(5120)
                             ->formatStateUsing(fn () => null)
                             ->dehydrated(fn ($state) => filled($state))
-                            ->helperText('Drag & drop or browse to replace the current photo.')
+                            ->saveUploadedFileUsing(fn (\Illuminate\Http\UploadedFile $file): string => app(\App\Services\ImageService::class)->storeAsWebp($file, 'products', 1200, 85))
+                            ->helperText('Drag & drop or browse to replace (auto-optimized & converted to WebP).')
                             ->columnSpanFull()
                             ->hidden(fn (string $operation): bool => $operation === 'view'),
 

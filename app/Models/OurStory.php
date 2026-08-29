@@ -33,12 +33,13 @@ class OurStory extends Model
     }
 
     /**
-     * Get the accessible public URL for story image.
+     * Get the accessible public URL for story image (prioritizes optimized WebP).
      */
     public function getImageUrlAttribute(): string
     {
         if (empty($this->image)) {
-            return asset('assets/images/cta.jpeg');
+            $defaultWebp = 'assets/images/cta.webp';
+            return file_exists(public_path($defaultWebp)) ? asset($defaultWebp) : asset('assets/images/cta.jpeg');
         }
 
         if (str_starts_with($this->image, 'http://') || str_starts_with($this->image, 'https://')) {
@@ -46,7 +47,16 @@ class OurStory extends Model
         }
 
         if (str_starts_with($this->image, 'assets/')) {
+            $webp = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $this->image);
+            if ($webp !== $this->image && file_exists(public_path($webp))) {
+                return asset($webp);
+            }
             return asset($this->image);
+        }
+
+        $webpStorage = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $this->image);
+        if ($webpStorage !== $this->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($webpStorage)) {
+            return asset('storage/' . $webpStorage);
         }
 
         return asset('storage/' . $this->image);

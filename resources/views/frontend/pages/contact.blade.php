@@ -105,6 +105,7 @@
 
                         <form id="contact-form" action="{{ route('contact.store') }}" method="POST" class="space-y-4">
                             @csrf
+                            @honeypot
 
                             <div>
                                 <label class="block text-[10px] font-bold tracking-wider text-[#1B3B5A] uppercase mb-1">
