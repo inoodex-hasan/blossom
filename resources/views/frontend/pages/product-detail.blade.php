@@ -2,6 +2,34 @@
 
 @section('title', $product->name . ' - ' . ($siteSettings['site_name'] ?? 'Sundry Blossom'))
 
+@section('meta_description', Str::limit(strip_tags($product->description ?: $product->long_description), 160))
+@section('og_type', 'product')
+@section('og_title', $product->name . ' - Handcrafted Collection | ' . ($siteSettings['site_name'] ?? 'Sundry Blossom'))
+@section('og_description', Str::limit(strip_tags($product->description ?: $product->long_description), 200))
+@section('og_image', $product->image_url)
+
+@section('structured_data')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "{{ $product->name }}",
+  "image": "{{ $product->image_url }}",
+  "description": "{{ addslashes(Str::limit(strip_tags($product->description ?: $product->long_description), 300)) }}",
+  "brand": {
+    "@type": "Brand",
+    "name": "{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "{{ url()->current() }}"
+  }
+}
+</script>
+@endsection
+
 @section('content')
 <section class="py-12 sm:py-16 px-5 sm:px-10 lg:px-16">
     <div class="max-w-6xl mx-auto">
@@ -96,12 +124,12 @@
                     @endif
 
                     <!-- Action Trigger -->
-                    <div class="mt-10 sm:mt-12 pt-6 border-t border-slate-100">
+                    <!-- <div class="mt-10 sm:mt-12 pt-6 border-t border-slate-100">
                         <button type="button" onclick="openInquiryModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#03a8f4] hover:bg-sky-500 text-white font-semibold text-xs sm:text-sm uppercase tracking-wider py-4 px-8 rounded-2xl shadow-lg transition">
                             <span>Request Trade Inquiry for this Collection</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

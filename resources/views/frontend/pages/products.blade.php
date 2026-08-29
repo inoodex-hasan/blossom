@@ -1,6 +1,10 @@
 @extends('frontend.layout.master')
 
-@section('title', 'Our Products - ' . ($siteSettings['site_name'] ?? 'Sundry Blossom'))
+@section('title', 'Our Collections & Handcrafted Goods - ' . ($siteSettings['site_name'] ?? 'Sundry Blossom'))
+
+@section('meta_description', 'Browse Sundry Blossom handcrafted collections. Discover sustainable textiles, natural fiber crafts, and ethically sourced goods from artisan communities.')
+@section('og_title', 'Our Collections & Handcrafted Goods | ' . ($siteSettings['site_name'] ?? 'Sundry Blossom'))
+@section('og_description', 'Explore our curated collections of handcrafted textiles, home decor, and natural goods.')
 
 @section('content')
 <section class="pt-20 pb-16 sm:pb-20 px-5 sm:px-6 lg:px-10 lg:px-16">

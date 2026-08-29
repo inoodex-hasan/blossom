@@ -2,6 +2,11 @@
 
 @section('title', ($ourStory->title ?? 'Our Story') . ' - ' . ($siteSettings['site_name'] ?? 'Sundry Blossom'))
 
+@section('meta_description', Str::limit(strip_tags($ourStory->short_description ?? 'Learn about Sundry Blossom, connecting skilled artisans with global trade partners.'), 160))
+@section('og_title', ($ourStory->title ?? 'Our Story') . ' - Artisan Heritage & Sustainable Sourcing')
+@section('og_description', Str::limit(strip_tags($ourStory->short_description ?? 'From humble beginnings to a trusted name in sustainable goods.'), 200))
+@section('og_image', $ourStory->image_url ?? asset('assets/images/cta.webp'))
+
 @section('content')
 <section class="w-full">
     <div class="w-full h-[250px] sm:h-[350px] lg:h-[420px] overflow-hidden">

@@ -16,14 +16,18 @@ Route::get('/our-story/{slug}', fn () => redirect()->route('our-story', status: 
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/inquiry', [PageController::class, 'inquiry'])->name('inquiry');
 
-// Public Form Submissions with Invisible Honeypot Spam Protection
+// Public Form Submissions with Invisible Honeypot Spam Protection & Rate Limiting
 Route::post('/contact', [ContactController::class, 'store'])
-    ->middleware(ProtectAgainstSpam::class)
+    ->middleware([ProtectAgainstSpam::class, 'throttle:10,1'])
     ->name('contact.store');
 
 Route::post('/inquiry', [InquiryController::class, 'store'])
-    ->middleware(ProtectAgainstSpam::class)
+    ->middleware([ProtectAgainstSpam::class, 'throttle:10,1'])
     ->name('inquiry.store');
 
 // Login Route Redirect to Admin Login
 Route::get('/login', fn () => redirect()->route('filament.admin.auth.login'))->name('login');
+
+// Dynamic SEO Endpoints
+Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapController::class, 'index'])->name('sitemap.xml');
+Route::get('/robots.txt', [\App\Http\Controllers\SitemapController::class, 'robots'])->name('robots.txt');

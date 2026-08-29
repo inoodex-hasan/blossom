@@ -57,6 +57,14 @@ class AdminTest extends TestCase
         $response->assertSee('Sundry Blossom');
     }
 
+    public function test_dashboard_header_widget_renders_successfully(): void
+    {
+        \Livewire\Livewire::actingAs($this->admin)
+            ->test(\App\Filament\Widgets\DashboardHeaderWidget::class)
+            ->assertSee('Sundry Blossom Management')
+            ->assertSee('Add Product');
+    }
+
     public function test_dashboard_stats_widget_renders_successfully(): void
     {
         \Livewire\Livewire::actingAs($this->admin)

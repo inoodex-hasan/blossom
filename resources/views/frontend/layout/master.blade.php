@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', ($siteSettings['site_name'] ?? 'Sundry Blossom') . ' - ' . ($siteSettings['site_tagline'] ?? 'Handcrafted & Sustainable Goods'))</title>
+    
+    <!-- SEO & Metadata -->
+    <meta name="description" content="@yield('meta_description', $siteSettings['site_description'] ?? 'Sundry Blossom connects skilled artisans and sustainable craftsmanship with global trade partners. Explore our curated collections of handcrafted textiles, home decor, and natural goods.')">
+    <meta name="keywords" content="@yield('meta_keywords', 'handcrafted goods, sustainable textiles, artisan homeware, trade inquiry, ethical sourcing, Sundry Blossom')">
+    <link rel="canonical" href="@yield('canonical_url', url()->current())">
+
+    <!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:site_name" content="{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}">
+    <meta property="og:title" content="@yield('og_title', View::getSection('title', ($siteSettings['site_name'] ?? 'Sundry Blossom') . ' - Handcrafted & Sustainable Goods'))">
+    <meta property="og:description" content="@yield('og_description', View::getSection('meta_description', $siteSettings['site_description'] ?? 'Sundry Blossom connects skilled artisans and sustainable craftsmanship with global trade partners.'))">
+    <meta property="og:url" content="@yield('og_url', url()->current())">
+    <meta property="og:image" content="@yield('og_image', asset('assets/images/cta.webp'))">
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('twitter_title', View::getSection('og_title', View::getSection('title', 'Sundry Blossom')))">
+    <meta name="twitter:description" content="@yield('twitter_description', View::getSection('og_description', View::getSection('meta_description', 'Handcrafted & Sustainable Goods')))">
+    <meta name="twitter:image" content="@yield('twitter_image', View::getSection('og_image', asset('assets/images/cta.webp')))">
+
+    <!-- Structured Data (JSON-LD) -->
+    @yield('structured_data')
+
     <style>
         body { background-color: #fdf6f0; }
     </style>
