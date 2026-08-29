@@ -24,12 +24,12 @@
                         </a>
                     </p>
                 </div>
-                {{-- @if(!empty($siteSettings['contact_hours']))
+                @if(!empty($siteSettings['contact_hours']))
                 <div>
                     <h3 class="text-xs font-bold tracking-wider text-white/50 uppercase">Working Hours</h3>
                     <p class="mt-1 text-sm text-white/80">{{ $siteSettings['contact_hours'] }}</p>
                 </div>
-                @endif --}}
+                @endif
             </div>
         </div>
     </div>

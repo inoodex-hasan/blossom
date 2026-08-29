@@ -4,29 +4,29 @@
 
 @section('meta_description', Str::limit(strip_tags($product->description ?: $product->long_description), 160))
 @section('og_type', 'product')
-@section('og_title', $product->name . ' - Handcrafted Collection | ' . ($siteSettings['site_name'] ?? 'Sundry Blossom'))
+@section('og_title', $product->name . ' - Handcrafted Collection')
 @section('og_description', Str::limit(strip_tags($product->description ?: $product->long_description), 200))
 @section('og_image', $product->image_url)
 
 @section('structured_data')
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  "name": "{{ $product->name }}",
-  "image": "{{ $product->image_url }}",
-  "description": "{{ addslashes(Str::limit(strip_tags($product->description ?: $product->long_description), 300)) }}",
-  "brand": {
-    "@type": "Brand",
-    "name": "{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}"
-  },
-  "offers": {
-    "@type": "AggregateOffer",
-    "priceCurrency": "USD",
-    "availability": "https://schema.org/InStock",
-    "url": "{{ url()->current() }}"
-  }
-}
+{!! json_encode([
+  '@context' => 'https://schema.org/',
+  '@type' => 'Product',
+  'name' => $product->name,
+  'image' => $product->image_url,
+  'description' => Str::limit(strip_tags($product->description ?: $product->long_description), 300),
+  'brand' => [
+    '@type' => 'Brand',
+    'name' => $siteSettings['site_name'] ?? 'Sundry Blossom',
+  ],
+  'offers' => [
+    '@type' => 'AggregateOffer',
+    'priceCurrency' => 'USD',
+    'availability' => 'https://schema.org/InStock',
+    'url' => url()->current(),
+  ],
+], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
 </script>
 @endsection
 
@@ -56,28 +56,16 @@
                     <span class="text-xs font-bold uppercase tracking-widest text-[#0EA5E9]">Collection</span>
                     <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1B3B5A] leading-[1.05]">{{ $product->name }}</h1>
 
-                    <p class="mt-4 sm:mt-6 text-sm sm:text-base text-slate-600 leading-relaxed">{{ $product->description }}</p>
+                    @if($product->description)
+                        <p class="mt-4 sm:mt-6 text-sm sm:text-base text-slate-600 leading-relaxed">{{ $product->description }}</p>
+                    @endif
 
                     @if($product->long_description)
                     <div class="mt-8 sm:mt-10">
                         <h2 class="font-serif text-xl sm:text-2xl text-[#1B3B5A] border-b border-slate-100 pb-2">About This Collection</h2>
-                        
-                        @php
-                            $longDesc = $product->long_description;
-                            $hasHtml = \Illuminate\Support\Str::contains($longDesc, ['<p>', '<br>', '<ul>', '<ol>', '<li>', '<h3>', '<h2>', '<strong>']);
-                        @endphp
-
-                        @if($hasHtml)
-                            <div class="mt-3 sm:mt-4 text-sm sm:text-[15px] text-slate-600 leading-relaxed space-y-3">
-                                {!! $longDesc !!}
-                            </div>
-                        @else
-                            <div class="mt-3 sm:mt-4 space-y-3 sm:space-y-4 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
-                                @foreach(explode("\n\n", $longDesc) as $paragraph)
-                                    <p>{{ $paragraph }}</p>
-                                @endforeach
-                            </div>
-                        @endif
+                        <div class="mt-3 sm:mt-4 text-sm sm:text-[15px] text-slate-600 leading-relaxed space-y-3">
+                            {!! nl2br(e($product->long_description)) !!}
+                        </div>
                     </div>
                     @endif
 
@@ -122,14 +110,6 @@
                         </ul>
                     </div>
                     @endif
-
-                    <!-- Action Trigger -->
-                    <!-- <div class="mt-10 sm:mt-12 pt-6 border-t border-slate-100">
-                        <button type="button" onclick="openInquiryModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#03a8f4] hover:bg-sky-500 text-white font-semibold text-xs sm:text-sm uppercase tracking-wider py-4 px-8 rounded-2xl shadow-lg transition">
-                            <span>Request Trade Inquiry for this Collection</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                        </button>
-                    </div> -->
                 </div>
             </div>
         </div>
