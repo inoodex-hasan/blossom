@@ -22,7 +22,7 @@
             </div>
             @if($ourStory)
                 <div class="mt-6 sm:mt-8">
-                    <a href="{{ route('our-story', $ourStory->slug) }}" class="inline-flex items-center gap-2 bg-[#03a8f4] hover:bg-[#0284c7] text-white px-5 sm:px-6 py-2.5 rounded-lg font-medium text-xs uppercase tracking-wider transition-colors shadow-sm">
+                    <a href="{{ route('our-story') }}" class="inline-flex items-center gap-2 bg-[#03a8f4] hover:bg-[#0284c7] text-white px-5 sm:px-6 py-2.5 rounded-lg font-medium text-xs uppercase tracking-wider transition-colors shadow-sm">
                         Read More
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                     </a>

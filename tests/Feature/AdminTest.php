@@ -46,6 +46,7 @@ class AdminTest extends TestCase
     {
         $response = $this->get('/admin/login');
         $response->assertStatus(200);
+        $response->assertSee('Sundry Blossom');
         $response->assertSee('Sign in');
     }
 

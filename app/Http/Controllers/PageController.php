@@ -24,11 +24,9 @@ class PageController extends Controller
     /**
      * Display the Our Story page.
      */
-    public function ourStory(?string $slug = null)
+    public function ourStory()
     {
-        $ourStory = $slug
-            ? OurStory::where('slug', $slug)->firstOrFail()
-            : OurStory::firstOrFail();
+        $ourStory = OurStory::firstOrFail();
 
         return view('frontend.pages.our-story', compact('ourStory'));
     }

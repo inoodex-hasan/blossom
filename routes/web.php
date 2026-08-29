@@ -11,7 +11,8 @@ use Spatie\Honeypot\ProtectAgainstSpam;
 Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{slug}', [ProductController::class, 'show'])->name('products.show');
-Route::get('/our-story/{slug?}', [PageController::class, 'ourStory'])->name('our-story');
+Route::get('/our-story', [PageController::class, 'ourStory'])->name('our-story');
+Route::get('/our-story/{slug}', fn () => redirect()->route('our-story', status: 301));
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/inquiry', [PageController::class, 'inquiry'])->name('inquiry');
 
