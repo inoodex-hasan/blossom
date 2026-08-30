@@ -5,14 +5,16 @@
 @section('meta_description', Str::limit(strip_tags($ourStory->short_description ?? 'Learn about Sundry Blossom, connecting skilled artisans with global trade partners.'), 160))
 @section('og_title', ($ourStory->title ?? 'Our Story') . ' - Artisan Heritage & Sustainable Sourcing')
 @section('og_description', Str::limit(strip_tags($ourStory->short_description ?? 'From humble beginnings to a trusted name in sustainable goods.'), 200))
-@section('og_image', $ourStory->image_url ?? asset('assets/images/cta.webp'))
+@section('og_image', $ourStory->image_url ?? '')
 
 @section('content')
+@if(!empty($ourStory?->image_url))
 <section class="w-full">
     <div class="w-full h-[250px] sm:h-[350px] lg:h-[420px] overflow-hidden">
-        <img src="{{ $ourStory->image_url ?? asset('assets/images/cta.jpeg') }}" alt="{{ $ourStory->title ?? 'Our Story' }}" class="w-full h-full object-cover">
+        <img src="{{ $ourStory->image_url }}" alt="{{ $ourStory->title ?? 'Our Story' }}" class="w-full h-full object-cover">
     </div>
 </section>
+@endif
 
 <section class="py-12 sm:py-16 px-5 sm:px-10 lg:px-16">
     <div class="max-w-4xl mx-auto">

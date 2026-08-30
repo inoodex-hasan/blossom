@@ -3,7 +3,7 @@
 @section('title', 'Sundry Blossom - Handcrafted & Sustainable Goods')
 
 @section('bg')
-    <img src="{{ asset('assets/images/bg.jpeg') }}" alt="" class="w-full h-full object-cover opacity-25">
+    <div class="w-full h-full bg-[#fdf6f0] bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] opacity-40"></div>
 @endsection
 
 @section('hero')

@@ -7,11 +7,18 @@
             @forelse($products as $product)
             <a href="{{ route('products.show', $product->slug) }}" class="block group">
                 <div class="flex flex-col sm:flex-row items-stretch bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <div class="w-full sm:w-1/2 h-48 sm:h-44 bg-brand-100 overflow-hidden">
-                        <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="w-full sm:w-1/2 h-48 sm:h-44 bg-brand-100 overflow-hidden flex items-center justify-center">
+                        @if($product->image_url)
+                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        @else
+                            <div class="w-full h-full flex flex-col items-center justify-center bg-amber-500/10 text-amber-800 p-4 text-center">
+                                <span class="text-xs uppercase tracking-widest font-semibold text-amber-700">Handcrafted Collection</span>
+                                <span class="font-serif text-lg font-bold mt-1 text-[#1B3B5A]">{{ $product->name }}</span>
+                            </div>
+                        @endif
                     </div>
-                    <div class="w-full sm:w-1/2 bg-slate-200 flex items-center justify-center px-5 py-4 sm:py-0">
-                        <h3 class="text-lg sm:text-xl lg:text-2xl font-serif text-[#0c23d7] group-hover:text-[#03a8f4] transition-colors">{{ $product->name }}</h3>
+                    <div class="w-full sm:w-1/2 bg-slate-100 flex items-center justify-center px-5 py-4 sm:py-0">
+                        <h3 class="text-lg sm:text-xl lg:text-2xl font-serif text-[#1B3B5A] group-hover:text-[#03a8f4] transition-colors text-center">{{ $product->name }}</h3>
                     </div>
                 </div>
             </a>

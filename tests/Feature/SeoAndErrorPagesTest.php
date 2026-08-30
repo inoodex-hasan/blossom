@@ -14,6 +14,14 @@ class SeoAndErrorPagesTest extends TestCase
     {
         parent::setUp();
         $this->seed();
+
+        Product::create([
+            'name' => 'Handcrafted Legumes',
+            'slug' => 'legumes',
+            'description' => 'Organic legumes',
+            'image' => 'products/sample.jpg',
+            'is_active' => true,
+        ]);
     }
 
     public function test_homepage_renders_open_graph_meta_tags(): void

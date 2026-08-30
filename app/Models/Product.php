@@ -44,11 +44,10 @@ class Product extends Model
     /**
      * Get the accessible public URL for product image (prioritizes optimized WebP).
      */
-    public function getImageUrlAttribute(): string
+    public function getImageUrlAttribute(): ?string
     {
         if (empty($this->image)) {
-            $defaultWebp = 'assets/images/legumes.webp';
-            return file_exists(public_path($defaultWebp)) ? asset($defaultWebp) : asset('assets/images/legumes.jpeg');
+            return null;
         }
 
         if (str_starts_with($this->image, 'http://') || str_starts_with($this->image, 'https://')) {
@@ -60,7 +59,7 @@ class Product extends Model
             if ($webp !== $this->image && file_exists(public_path($webp))) {
                 return asset($webp);
             }
-            return asset($this->image);
+            return file_exists(public_path($this->image)) ? asset($this->image) : null;
         }
 
         $webpStorage = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $this->image);

@@ -1,12 +1,12 @@
 @extends('frontend.layout.master')
 
-@section('title', $product->name . ' - ' . ($siteSettings['site_name'] ?? 'Sundry Blossom'))
+@section('title', (string) ($product->name . ' - ' . ($siteSettings['site_name'] ?? 'Sundry Blossom')))
 
-@section('meta_description', Str::limit(strip_tags($product->description ?: $product->long_description), 160))
+@section('meta_description', (string) Str::limit(strip_tags($product->description ?: $product->long_description), 160))
 @section('og_type', 'product')
-@section('og_title', $product->name . ' - Handcrafted Collection')
-@section('og_description', Str::limit(strip_tags($product->description ?: $product->long_description), 200))
-@section('og_image', $product->image_url)
+@section('og_title', (string) ($product->name . ' - Handcrafted Collection'))
+@section('og_description', (string) Str::limit(strip_tags($product->description ?: $product->long_description), 200))
+@section('og_image', (string) ($product->image_url ?? ''))
 
 @section('structured_data')
 <script type="application/ld+json">
@@ -45,8 +45,15 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <!-- Left Image Column -->
             <div class="lg:col-span-6 sticky top-24">
-                <div class="rounded-3xl overflow-hidden shadow-xl bg-slate-100 aspect-4/3 sm:aspect-square">
-                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
+                <div class="rounded-3xl overflow-hidden shadow-xl bg-slate-100 aspect-4/3 sm:aspect-square flex items-center justify-center">
+                    @if($product->image_url)
+                        <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
+                    @else
+                        <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-amber-500/10 to-brand-100 p-8 text-center">
+                            <span class="text-xs uppercase tracking-widest font-semibold text-amber-800">Handcrafted Sourced Collection</span>
+                            <span class="font-serif text-3xl font-bold mt-2 text-[#1B3B5A]">{{ $product->name }}</span>
+                        </div>
+                    @endif
                 </div>
             </div>
 

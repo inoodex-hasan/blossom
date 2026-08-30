@@ -11,21 +11,21 @@ class DatabaseSeeder extends Seeder
     use WithoutModelEvents;
 
     /**
-     * Seed the application's database.
+     * Seed the application's database with baseline admin and settings.
      */
     public function run(): void
     {
-        User::factory()->create([
-            'name' => 'Inoodex',
-            'email' => 'hello@inoodex.com',
-            'password' => bcrypt('hello@inoodex.com'),
-        ]);
+        User::firstOrCreate(
+            ['email' => 'hello@inoodex.com'],
+            [
+                'name' => 'Inoodex',
+                'password' => bcrypt('hello@inoodex.com'),
+            ]
+        );
 
         $this->call([
-            ProductSeeder::class,
             OurStorySeeder::class,
             SiteSettingSeeder::class,
-            HeroSlideSeeder::class,
         ]);
     }
 }

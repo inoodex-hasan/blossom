@@ -19,6 +19,15 @@ class ExampleTest extends TestCase
         parent::setUp();
 
         $this->seed();
+
+        Product::create([
+            'name' => 'Legumes',
+            'slug' => 'legumes',
+            'description' => 'Fine organic legumes from Rajshahi.',
+            'long_description' => 'Our premium collection of legumes.',
+            'highlights' => ['100% Organic', 'Ethically Sourced'],
+            'is_active' => true,
+        ]);
     }
 
     public function test_homepage_returns_successful_response(): void
@@ -34,7 +43,7 @@ class ExampleTest extends TestCase
         $response = $this->get('/products');
         $response->assertStatus(200);
         $response->assertSee('Our Collections', false);
-        $response->assertSee('Cotton');
+        $response->assertSee('Legumes');
     }
 
     public function test_product_detail_page_returns_successful_response(): void

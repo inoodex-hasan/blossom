@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 25, 2026 at 09:05 AM
+-- Generation Time: Aug 29, 2026 at 11:07 AM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.28
 
@@ -322,7 +322,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Inoodex', 'hello@inoodex.com', '2026-08-25 02:42:27', '$2y$12$taF9A/x20kGyZKD3FyFlpOmZg8yZazqlY3N7/W5Xmca0SWYU38aO2', 'Mxy9VGtGZK', '2026-08-25 02:42:28', '2026-08-25 02:42:28');
+(1, 'Inoodex', 'hello@inoodex.com', '2026-08-25 02:42:27', '$2y$12$taF9A/x20kGyZKD3FyFlpOmZg8yZazqlY3N7/W5Xmca0SWYU38aO2', 'jnjDucAJKQleXby4W4lRcuceqP5cvBnNT0hoyOtMs52MbYXfKEeBSscjgBrc', '2026-08-25 02:42:28', '2026-08-25 02:42:28');
 
 --
 -- Indexes for dumped tables
@@ -479,7 +479,7 @@ ALTER TABLE `our_stories`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `site_settings`

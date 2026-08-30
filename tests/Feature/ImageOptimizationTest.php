@@ -41,7 +41,16 @@ class ImageOptimizationTest extends TestCase
 
     public function test_product_model_image_url_serves_webp_when_available(): void
     {
-        $product = Product::first();
+        Storage::fake('public');
+        Storage::disk('public')->put('products/sample.webp', 'fake content');
+
+        $product = Product::create([
+            'name' => 'Sample Product',
+            'slug' => 'sample-product',
+            'image' => 'products/sample.jpg',
+            'is_active' => true,
+        ]);
+
         $url = $product->image_url;
 
         $this->assertNotEmpty($url);

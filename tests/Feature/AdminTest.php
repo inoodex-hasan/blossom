@@ -28,6 +28,20 @@ class AdminTest extends TestCase
             'email' => 'hello@inoodex.com',
             'password' => bcrypt('hello@inoodex.com'),
         ]);
+
+        Product::create([
+            'name' => 'Legumes',
+            'slug' => 'legumes',
+            'description' => 'Test legumes',
+            'is_active' => true,
+        ]);
+
+        HeroSlide::create([
+            'title' => 'Sundry Blossom',
+            'subtitle' => 'Handcrafted goods',
+            'is_active' => true,
+            'sort_order' => 1,
+        ]);
     }
 
     public function test_login_route_redirects_to_filament_login(): void
