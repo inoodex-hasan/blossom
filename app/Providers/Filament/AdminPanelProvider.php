@@ -27,8 +27,8 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->brandName('Sundry Blossom')
-            ->brandLogo(fn () => new \Illuminate\Support\HtmlString('<span style="font-size: 1.85rem; font-weight: 700; font-family: serif; letter-spacing: -0.02em; color: #d97706;">Sundry Blossom</span>'))
+            ->brandName(fn () => \App\Models\SiteSetting::get('site_name', 'Sundry Blossom'))
+            ->brandLogo(fn () => new \Illuminate\Support\HtmlString('<span style="font-size: 1.85rem; font-weight: 700; font-family: serif; letter-spacing: -0.02em; color: #d97706;">' . e(\App\Models\SiteSetting::get('site_name', 'Sundry Blossom')) . '</span>'))
             ->brandLogoHeight('2.75rem')
             ->colors([
                 'primary' => Color::Amber,
