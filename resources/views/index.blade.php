@@ -8,6 +8,7 @@
 
 @section('hero')
     @include('frontend.layout.hero')
+    @include('frontend.layout.tagline')
 @endsection
 
 @section('content')

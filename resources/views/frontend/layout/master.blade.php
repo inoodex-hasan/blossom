@@ -17,17 +17,13 @@
     <meta property="og:title" content="@yield('og_title', ($siteSettings['site_name'] ?? 'Sundry Blossom') . ' - Handcrafted & Sustainable Goods')">
     <meta property="og:description" content="@yield('og_description', $siteSettings['site_description'] ?? 'Sundry Blossom connects skilled artisans and sustainable craftsmanship with global trade partners.')">
     <meta property="og:url" content="@yield('og_url', url()->current())">
-    @if(trim($__env->yieldContent('og_image')))
-    <meta property="og:image" content="@yield('og_image')">
-    @endif
+    <meta property="og:image" content="@yield('og_image', asset('assets/images/cta.webp'))">
 
     <!-- Twitter / X Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="@yield('og_title', ($siteSettings['site_name'] ?? 'Sundry Blossom') . ' - Handcrafted Goods')">
     <meta name="twitter:description" content="@yield('og_description', $siteSettings['site_description'] ?? 'Sundry Blossom connects skilled artisans.')">
-    @if(trim($__env->yieldContent('og_image')))
-    <meta name="twitter:image" content="@yield('og_image')">
-    @endif
+    <meta name="twitter:image" content="@yield('og_image', asset('assets/images/cta.webp'))">
 
     <!-- Structured Data (JSON-LD) -->
     @yield('structured_data')
@@ -120,6 +116,7 @@
         @include('frontend.layout.header')
 
         @yield('hero')
+        @yield('tagline')
 
         <main>
             @yield('content')

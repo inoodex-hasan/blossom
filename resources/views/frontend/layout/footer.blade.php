@@ -1,15 +1,15 @@
 <!-- Footer -->
 <footer class="bg-slate-800 text-white">
     <div class="max-w-7xl mx-auto px-5 sm:px-10 py-8 sm:py-16 lg:py-20">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-start">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 items-start">
             <div>
-                <h2 class="text-xl sm:text-5xl font-serif italic leading-snug text-white/90">
+                <h2 class="text-xl sm:text-4xl font-serif italic leading-snug text-white/90">
                     Contact us for inquiries <br>and partnerships.
                 </h2>
             </div>
             <div class="space-y-4 sm:space-y-6">
                 <div>
-                    <h3 class="text-xs font-bold tracking-wider text-white/50 uppercase">Phone</h3>
+                    <h3 class="text-xs font-bold tracking-wider text-white/50 uppercase">call us </h3>
                     <p class="mt-1 text-sm text-white/80">
                         <a href="tel:{{ $siteSettings['contact_phone'] ?? '+8804767775689' }}" class="hover:underline">
                             {{ $siteSettings['contact_phone_display'] ?? ($siteSettings['contact_phone'] ?? '04767775689') }}
@@ -17,12 +17,25 @@
                     </p>
                 </div>
                 <div>
-                    <h3 class="text-xs font-bold tracking-wider text-white/50 uppercase">Email</h3>
+                    <h3 class="text-xs font-bold tracking-wider text-white/50 uppercase">Email us</h3>
                     <p class="mt-1 text-sm text-white/80">
                         <a href="mailto:{{ $siteSettings['contact_email'] ?? 'sundryblossom@gmail.com' }}" class="hover:underline">
                             {{ $siteSettings['contact_email'] ?? 'sundryblossom@gmail.com' }}
                         </a>
                     </p>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold tracking-wider text-white/50 uppercase">Website</h3>
+                    <p class="mt-1 text-sm text-white/80">
+                        <a href="{{ route('home') }}" class="hover:underline">{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}</a>
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold tracking-wider text-white/50 uppercase flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        Address
+                    </h3>
+                    <p class="mt-1 text-sm text-white/80">{{ $siteSettings['contact_address'] ?? 'New York, NY 10001' }}</p>
                 </div>
                 @if(!empty($siteSettings['contact_hours']))
                 <div>
@@ -31,15 +44,33 @@
                 </div>
                 @endif
             </div>
+
+            <!-- Quick Links -->
+            <div class="space-y-4 sm:space-y-6">
+                <div>
+                    <h3 class="text-xs font-bold tracking-wider text-white/50 uppercase mb-3">Quick Links</h3>
+                    <ul class="space-y-2.5">
+                        <li><a href="{{ route('our-story') }}" class="text-sm text-white/80 hover:text-white transition hover:underline">Our Story</a></li>
+                        <li><a href="{{ route('products.index') }}" class="text-sm text-white/80 hover:text-white transition hover:underline">Our Products & Collections</a></li>
+                        <li><a href="{{ route('contact') }}" class="text-sm text-white/80 hover:text-white transition hover:underline">Contact</a></li>
+                        <li><button onclick="openInquiryModal()" type="button" class="text-sm text-white/80 hover:text-white transition cursor-pointer hover:underline">Trade Inquiry</button></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="border-t border-white/10 py-5 sm:py-6 px-5 flex flex-col sm:flex-row items-center justify-between gap-3 max-w-7xl mx-auto">
-        <p class="text-xs text-white/40">&copy; {{ date('Y') }} {{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}. All rights reserved.</p>
-        <div class="flex items-center gap-4">
-            <p class="text-xs text-white/40">Developed by <a href="https://inoodex.com/" target="_blank" class="text-white/60 hover:text-white transition underline">Inoodex</a></p>
-            <a href="#" onclick="scrollToTop(event)" id="scroll-top" aria-label="Scroll to top" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition">
-                <svg class="w-4 h-4 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
-            </a>
+    <div class="border-t border-white/10 py-5 sm:py-6 px-5 max-w-7xl mx-auto">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p class="text-xs text-white/40">&copy; {{ date('Y') }} {{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}. All rights reserved.</p>
+            <div class="flex items-center gap-4">
+                <p class="text-xs text-white/40">Developed by <a href="https://inoodex.com/" target="_blank" class="text-white/60 hover:text-white transition underline">Inoodex</a></p>
+            </div>
+        </div>
+        <div class="flex justify-center mt-4">
+            <button onclick="scrollToTop(event)" class="flex items-center gap-2 text-xs text-white/50 hover:text-white/80 transition cursor-pointer">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+                <span>Back to top</span>
+            </button>
         </div>
     </div>
 </footer>
@@ -105,9 +136,7 @@
 
         <div id="modal-feedback" class="hidden mx-5 mt-4 p-3 rounded-lg text-sm font-medium"></div>
 
-        <form id="inquiry-form" action="{{ route('inquiry.store') }}" method="POST" class="px-5 sm:px-6 py-4 space-y-3">
-            @csrf
-            @honeypot
+        <form id="inquiry-form" class="px-5 sm:px-6 py-4 space-y-3">
 
             <!-- Section: Contact details -->
             <div class="bg-[#0EA5E9] text-white font-serif text-xs font-bold tracking-wide px-3 py-1.5 rounded">Contact Details</div>

@@ -3,7 +3,7 @@
 @endphp
 
 <!-- Hero Banner / Slider -->
-<section class="w-full bg-slate-900 shadow-sm overflow-hidden relative select-none">
+<section class="w-full shadow-sm relative select-none px-3 sm:px-4 md:px-6 lg:px-8">
     @if($slides->count() > 0)
         <div x-data="{
                 active: 0,
@@ -36,7 +36,7 @@
             }"
             @mouseenter="stopAutoplay()"
             @mouseleave="startAutoplay()"
-            class="relative w-full h-[240px] xs:h-[300px] sm:h-[380px] md:h-[460px] lg:h-[540px] xl:h-[600px]">
+            class="relative w-full h-[240px] xs:h-[300px] sm:h-[380px] md:h-[460px] lg:h-[540px] xl:h-[600px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl shadow-black/20">
 
             <!-- Slides Container -->
             @foreach($slides as $index => $slide)
@@ -119,31 +119,11 @@
             @endif
         </div>
     @else
-        <!-- Elegant Dynamic Brand Hero (When no slides are configured) -->
-        <div class="relative w-full py-20 sm:py-28 lg:py-36 px-6 sm:px-12 lg:px-20 bg-gradient-to-br from-[#1B3B5A] via-[#142C44] to-[#0A1929] text-white flex flex-col justify-center items-start">
-            <div class="max-w-3xl space-y-4 sm:space-y-6">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold uppercase tracking-widest">
-                    <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                    {{ $siteSettings['site_tagline'] ?? 'Handcrafted & Sustainable Goods' }}
-                </div>
-                <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
-                    Connecting Skilled Artisans with Global Trade
-                </h1>
-                <p class="text-sm sm:text-base md:text-lg text-slate-300 leading-relaxed max-w-2xl">
-                    {{ $siteSettings['site_description'] ?? 'Discover authentic, sustainably sourced goods crafted with dedication across Bangladesh. Pure quality, ethical trade partnerships, and enduring heritage.' }}
-                </p>
-                <div class="pt-4 flex flex-wrap items-center gap-3.5">
-                    <a href="{{ route('products.index') }}"
-                       class="inline-flex items-center gap-2 bg-[#03a8f4] hover:bg-[#0284c7] text-white px-6 py-3 rounded-xl font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all duration-200 shadow-lg shadow-sky-500/30">
-                        <span>Explore Collections</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                    </a>
-                    <button onclick="openInquiryModal()" type="button"
-                       class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 px-6 py-3 rounded-xl font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all duration-200 cursor-pointer">
-                        <span>Trade Inquiry</span>
-                    </button>
-                </div>
-            </div>
+        <!-- Fallback Static Hero -->
+        <div class="relative w-full">
+            <img src="{{ asset('assets/images/hero.jpeg') }}"
+                 alt="{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}"
+                 class="w-full h-[220px] xs:h-[280px] sm:h-[360px] md:h-[440px] lg:h-[520px] xl:h-[580px] object-cover object-center">
         </div>
     @endif
 </section>

@@ -45,15 +45,8 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <!-- Left Image Column -->
             <div class="lg:col-span-6 sticky top-24">
-                <div class="rounded-3xl overflow-hidden shadow-xl bg-slate-100 aspect-4/3 sm:aspect-square flex items-center justify-center">
-                    @if($product->image_url)
-                        <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
-                    @else
-                        <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-amber-500/10 to-brand-100 p-8 text-center">
-                            <span class="text-xs uppercase tracking-widest font-semibold text-amber-800">Handcrafted Sourced Collection</span>
-                            <span class="font-serif text-3xl font-bold mt-2 text-[#1B3B5A]">{{ $product->name }}</span>
-                        </div>
-                    @endif
+                <div class="rounded-3xl overflow-hidden shadow-xl bg-slate-100 aspect-4/3 sm:aspect-square">
+                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
                 </div>
             </div>
 
@@ -64,14 +57,14 @@
                     <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1B3B5A] leading-[1.05]">{{ $product->name }}</h1>
 
                     @if($product->description)
-                        <p class="mt-4 sm:mt-6 text-sm sm:text-base text-slate-600 leading-relaxed">{{ $product->description }}</p>
+                        <p class="mt-4 sm:mt-6 text-sm sm:text-base text-slate-600 leading-relaxed">{{ strip_tags($product->description) }}</p>
                     @endif
 
                     @if($product->long_description)
                     <div class="mt-8 sm:mt-10">
                         <h2 class="font-serif text-xl sm:text-2xl text-[#1B3B5A] border-b border-slate-100 pb-2">About This Collection</h2>
                         <div class="mt-3 sm:mt-4 text-sm sm:text-[15px] text-slate-600 leading-relaxed space-y-3">
-                            {!! nl2br(e($product->long_description)) !!}
+                            {!! nl2br(e(strip_tags($product->long_description))) !!}
                         </div>
                     </div>
                     @endif

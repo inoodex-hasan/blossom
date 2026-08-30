@@ -13,10 +13,10 @@
                 <span class="w-2 h-2 rounded-full bg-amber-500"></span>
             </div>
         </div>
-        <div class="style-container bg-white/80 backdrop-blur-sm rounded-2xl p-5 sm:p-8 lg:p-10 shadow-md border border-amber-100 max-w-lg lg:ml-auto max-h-[250px] sm:max-h-[280px] lg:max-h-[300px] flex flex-col">
+        <div class="style-container bg-white/80 backdrop-blur-sm rounded-2xl p-5 sm:p-8 lg:p-10 shadow-md border border-amber-100 max-w-xl lg:ml-auto max-h-[250px] sm:max-h-[280px] lg:max-h-[300px] flex flex-col">
             <div class="overflow-y-auto pr-3 sm:pr-4 style-scrollbar space-y-4">
                 <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-                    At {{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}, we craft and curate pieces that bring warmth, authenticity, and enduring beauty to modern living. From sustainably harvested natural cotton and organic pulses to handcrafted apparel and bespoke home accents, every creation honors time-tested craftsmanship and mindful design.
+                    At Sundry Blossom, we craft and curate pieces that bring warmth, authenticity, and enduring beauty to modern living. From sustainably harvested natural cotton and organic pulses to handcrafted apparel and bespoke home accents, every creation honors time-tested craftsmanship and mindful design.
                 </p>
                 <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
                     We work hand-in-hand with regional weavers, farmers, and artisans across Bangladesh to celebrate traditional techniques while designing for contemporary lifestyle needs.
