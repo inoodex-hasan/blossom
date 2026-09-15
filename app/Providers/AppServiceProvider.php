@@ -49,8 +49,9 @@ class AppServiceProvider extends ServiceProvider
 
             foreach ($storageDirs as $dir) {
                 if (!file_exists($dir)) {
-                    @mkdir($dir, 0775, true);
+                    @mkdir($dir, 0777, true);
                 }
+                @chmod($dir, 0777);
             }
         } catch (\Throwable $e) {
             // Graceful fallback
