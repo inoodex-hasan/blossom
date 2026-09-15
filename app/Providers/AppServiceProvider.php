@@ -33,6 +33,29 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('https');
         }
 
+        // Ensure critical storage directories exist for Livewire & Filament temporary uploads
+        try {
+            $storageDirs = [
+                storage_path('app/private/livewire-tmp'),
+                storage_path('app/livewire-tmp'),
+                storage_path('app/public/hero-slides'),
+                storage_path('app/public/products'),
+                storage_path('app/public/our-stories'),
+                storage_path('app/public/site-settings'),
+                storage_path('framework/cache/data'),
+                storage_path('framework/sessions'),
+                storage_path('framework/views'),
+            ];
+
+            foreach ($storageDirs as $dir) {
+                if (!file_exists($dir)) {
+                    @mkdir($dir, 0775, true);
+                }
+            }
+        } catch (\Throwable $e) {
+            // Graceful fallback
+        }
+
         // Share global dynamic data with all views
         View::composer('*', function ($view) {
             $headerProducts = collect();
