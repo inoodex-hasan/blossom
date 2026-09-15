@@ -1,7 +1,7 @@
 <!-- Call to Action -->
 <section class="relative w-full">
     <div class="absolute inset-0">
-        <img src="{{ asset('assets/images/shilpo.jpg') }}" alt="" class="w-full h-full object-cover">
+        <img src="{{ asset('assets/images/handloom-cta.jpg') }}" alt="" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-slate-900/70"></div>
     </div>
     <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-10 lg:px-16 py-14 sm:py-24 lg:py-32">

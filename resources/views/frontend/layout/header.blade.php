@@ -6,9 +6,9 @@
             <!-- Logo + Title -->
             <a href="{{ route('home') }}" class="flex items-center gap-2.5 shrink-0">
                 @if(!empty($siteSettings['site_logo']))
-                    <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}" class="h-9 sm:h-11 w-auto max-w-[160px] object-contain">
+                    <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}" class="h-16 sm:h-20 w-auto max-w-[220px] object-contain">
                 @else
-                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border-2 border-[#1B3B5A] flex items-center justify-center">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-[#1B3B5A] flex items-center justify-center">
                         <span class="text-sm sm:text-base font-serif font-bold text-[#1B3B5A]">
                             {{ strtoupper(substr($siteSettings['site_name'] ?? 'Sundry Blossom', 0, 1)) }}{{ strtoupper(substr(strrchr($siteSettings['site_name'] ?? 'Sundry Blossom', ' ') ?: 'B', 1, 1)) }}
                         </span>

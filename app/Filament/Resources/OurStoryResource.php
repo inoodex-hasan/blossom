@@ -72,6 +72,17 @@ class OurStoryResource extends Resource
                             ])
                             ->columns(2),
 
+                        Section::make('History Video')
+                            ->description('YouTube or uploaded video URL shown on the home page History section.')
+                            ->schema([
+                                Forms\Components\TextInput::make('video_url')
+                                    ->label('Video URL')
+                                    ->placeholder('https://youtube.com/watch?v=... or uploaded file path')
+                                    ->helperText('Paste a YouTube link or enter an uploaded video path (e.g. our-stories/video.mp4).')
+                                    ->maxLength(500)
+                                    ->columnSpanFull(),
+                            ]),
+
                         Section::make('Full Narrative Content')
                             ->schema([
                                 Forms\Components\RichEditor::make('content')

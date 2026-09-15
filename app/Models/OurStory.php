@@ -15,6 +15,7 @@ class OurStory extends Model
         'short_description',
         'content',
         'image',
+        'video_url',
     ];
 
     protected $appends = [

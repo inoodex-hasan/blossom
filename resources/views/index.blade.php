@@ -13,10 +13,12 @@
 
 @section('content')
     @include('frontend.layout.style-function')
+     @include('frontend.layout.history')
     @include('frontend.layout.products')
 @endsection
 
 @section('journey')
     @include('frontend.layout.journey')
+   
     @include('frontend.layout.cta')
 @endsection
