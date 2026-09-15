@@ -57,6 +57,17 @@ class AppServiceProvider extends ServiceProvider
             // Graceful fallback
         }
 
+        // Auto-heal missing database columns on live environments if migration not yet run
+        try {
+            if (Schema::hasTable('our_stories') && !Schema::hasColumn('our_stories', 'video_url')) {
+                Schema::table('our_stories', function (\Illuminate\Database\Schema\Blueprint $table) {
+                    $table->string('video_url')->nullable()->after('image');
+                });
+            }
+        } catch (\Throwable $e) {
+            // Graceful fallback
+        }
+
         // Share global dynamic data with all views
         View::composer('*', function ($view) {
             $headerProducts = collect();
