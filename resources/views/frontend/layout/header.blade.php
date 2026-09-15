@@ -1,22 +1,22 @@
 <nav class="bg-white shadow-sm sticky top-0 z-50">
     <!-- Top Row: Logo + Search + Inquiry -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16 sm:h-18 gap-4">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-14 sm:h-16 lg:h-18 gap-2 sm:gap-4">
 
             <!-- Logo + Title -->
-            <a href="{{ route('home') }}" class="flex items-center gap-2.5 shrink-0">
+            <a href="{{ route('home') }}" class="flex items-center gap-1.5 sm:gap-2.5 shrink-0 min-w-0">
                 @if(!empty($siteSettings['site_logo']))
-                    <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}" class="h-16 sm:h-20 w-auto max-w-[220px] object-contain">
+                    <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}" class="h-8 sm:h-12 lg:h-14 w-auto max-w-[120px] sm:max-w-[180px] object-contain shrink-0">
                 @else
-                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-[#1B3B5A] flex items-center justify-center">
-                        <span class="text-sm sm:text-base font-serif font-bold text-[#1B3B5A]">
+                    <div class="w-8 h-8 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full border-2 border-[#1B3B5A] flex items-center justify-center shrink-0">
+                        <span class="text-xs sm:text-sm font-serif font-bold text-[#1B3B5A]">
                             {{ strtoupper(substr($siteSettings['site_name'] ?? 'Sundry Blossom', 0, 1)) }}{{ strtoupper(substr(strrchr($siteSettings['site_name'] ?? 'Sundry Blossom', ' ') ?: 'B', 1, 1)) }}
                         </span>
                     </div>
                 @endif
-                <div class="flex flex-col leading-none">
-                    <span class="text-base sm:text-xl font-serif font-bold tracking-wide text-[#1B3B5A]">{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}</span>
-                    <span class="text-[8px] sm:text-[10px] font-serif tracking-[0.15em] text-slate-500 uppercase">{{ $siteSettings['site_tagline'] ?? 'Handcrafted & Sustainable Goods' }}</span>
+                <div class="flex flex-col leading-none min-w-0">
+                    <span class="text-sm sm:text-lg lg:text-xl font-serif font-bold tracking-wide text-[#1B3B5A] truncate">{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}</span>
+                    <span class="text-[7px] sm:text-[9px] lg:text-[10px] font-serif tracking-[0.12em] sm:tracking-[0.15em] text-slate-500 uppercase truncate">{{ $siteSettings['site_tagline'] ?? 'Handcrafted & Sustainable Goods' }}</span>
                 </div>
             </a>
 
@@ -31,14 +31,11 @@
             </div>
 
             <!-- Inquiry Button + Mobile Menu -->
-            <div class="flex items-center gap-3 shrink-0">
-                <button onclick="openInquiryModal()" type="button" class="bg-[#03a8f4] hover:bg-[#0284c7] cursor-pointer text-white px-5 py-2 rounded-lg font-semibold text-xs sm:text-sm uppercase tracking-wider transition-colors">
-                    Inquiry
-                </button>
-                <button id="menu-btn" onclick="toggleMobileMenu()" type="button" aria-label="Toggle Navigation Menu" class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none cursor-pointer">
-                    <span id="bar1" class="block w-6 h-0.5 bg-[#1B3B5A] transition-all duration-300 origin-center pointer-events-none"></span>
-                    <span id="bar2" class="block w-6 h-0.5 bg-[#1B3B5A] transition-all duration-300 pointer-events-none"></span>
-                    <span id="bar3" class="block w-6 h-0.5 bg-[#1B3B5A] transition-all duration-300 origin-center pointer-events-none"></span>
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+                <button id="menu-btn" onclick="toggleMobileMenu()" type="button" aria-label="Toggle Navigation Menu" class="md:hidden flex flex-col justify-center items-center w-8 h-8 sm:w-10 sm:h-10 space-y-1 focus:outline-none cursor-pointer">
+                    <span id="bar1" class="block w-5 sm:w-6 h-0.5 bg-[#1B3B5A] transition-all duration-300 origin-center pointer-events-none"></span>
+                    <span id="bar2" class="block w-5 sm:w-6 h-0.5 bg-[#1B3B5A] transition-all duration-300 pointer-events-none"></span>
+                    <span id="bar3" class="block w-5 sm:w-6 h-0.5 bg-[#1B3B5A] transition-all duration-300 origin-center pointer-events-none"></span>
                 </button>
             </div>
         </div>
@@ -89,6 +86,7 @@
             </div>
         </div>
         <a href="{{ route('contact') }}" class="block py-3 px-4 rounded-lg {{ request()->routeIs('contact') ? 'text-[#1B3B5A] bg-slate-100' : 'text-[#1B3B5A]' }} font-medium">Contact</a>
+        <button onclick="closeInquiryModal(); toggleMobileMenu(); setTimeout(function(){ openInquiryModal(); }, 300);" type="button" class="w-full block py-3 px-4 rounded-lg bg-[#03a8f4] hover:bg-[#0284c7] text-white font-medium text-center cursor-pointer">Inquiry</button>
     </div>
 </nav>
 
