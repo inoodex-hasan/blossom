@@ -28,8 +28,15 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->brandName(fn () => \App\Models\SiteSetting::get('site_name', 'Sundry Blossom'))
-            ->brandLogo(fn () => new \Illuminate\Support\HtmlString('<span style="font-size: 1.85rem; font-weight: 700; font-family: serif; letter-spacing: -0.02em; color: #d97706;">' . e(\App\Models\SiteSetting::get('site_name', 'Sundry Blossom')) . '</span>'))
+            ->brandLogo(function () {
+                $logo = \App\Models\SiteSetting::get('site_logo');
+                if ($logo) {
+                    return new \Illuminate\Support\HtmlString('<img src="' . asset('storage/' . $logo) . '" alt="' . e(\App\Models\SiteSetting::get('site_name', 'Sundry Blossom')) . '" class="h-9 w-auto max-w-[180px] object-contain" />');
+                }
+                return new \Illuminate\Support\HtmlString('<span style="font-size: 1.85rem; font-weight: 700; font-family: serif; letter-spacing: -0.02em; color: #d97706;">' . e(\App\Models\SiteSetting::get('site_name', 'Sundry Blossom')) . '</span>');
+            })
             ->brandLogoHeight('2.75rem')
+            ->favicon(fn () => ($icon = \App\Models\SiteSetting::get('site_favicon')) ? asset('storage/' . $icon) : asset('favicon.ico'))
             ->colors([
                 'primary' => Color::Amber,
                 'gray' => Color::Slate,

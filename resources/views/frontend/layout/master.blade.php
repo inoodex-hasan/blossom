@@ -7,23 +7,37 @@
     <title>@yield('title', ($siteSettings['site_name'] ?? 'Sundry Blossom') . ' - ' . ($siteSettings['site_tagline'] ?? 'Handcrafted & Sustainable Goods'))</title>
     
     <!-- SEO & Metadata -->
-    <meta name="description" content="@yield('meta_description', $siteSettings['site_description'] ?? 'Sundry Blossom connects skilled artisans and sustainable craftsmanship with global trade partners. Explore our curated collections of handcrafted textiles, home decor, and natural goods.')">
-    <meta name="keywords" content="@yield('meta_keywords', 'handcrafted goods, sustainable textiles, artisan homeware, trade inquiry, ethical sourcing, Sundry Blossom')">
+    <meta name="description" content="@yield('meta_description', $siteSettings['site_description'] ?? (($siteSettings['site_name'] ?? 'Sundry Blossom') . ' connects skilled artisans and sustainable craftsmanship with global trade partners.'))">
+    <meta name="keywords" content="@yield('meta_keywords', $siteSettings['site_keywords'] ?? ('handcrafted goods, sustainable textiles, artisan homeware, trade inquiry, ethical sourcing, ' . ($siteSettings['site_name'] ?? 'Sundry Blossom')))">
     <link rel="canonical" href="@yield('canonical_url', url()->current())">
+    
+    <!-- Favicon -->
+    @if(!empty($siteSettings['site_favicon']))
+        <link rel="icon" href="{{ asset('storage/' . $siteSettings['site_favicon']) }}">
+        <link rel="apple-touch-icon" href="{{ asset('storage/' . $siteSettings['site_favicon']) }}">
+    @else
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    @endif
+
+    @php
+        $defaultSocialImage = !empty($siteSettings['site_logo']) 
+            ? asset('storage/' . $siteSettings['site_logo']) 
+            : (!empty($siteSettings['site_favicon']) ? asset('storage/' . $siteSettings['site_favicon']) : '');
+    @endphp
 
     <!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
     <meta property="og:type" content="@yield('og_type', 'website')">
     <meta property="og:site_name" content="{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}">
-    <meta property="og:title" content="@yield('og_title', ($siteSettings['site_name'] ?? 'Sundry Blossom') . ' - Handcrafted & Sustainable Goods')">
-    <meta property="og:description" content="@yield('og_description', $siteSettings['site_description'] ?? 'Sundry Blossom connects skilled artisans and sustainable craftsmanship with global trade partners.')">
+    <meta property="og:title" content="@yield('og_title', ($siteSettings['site_name'] ?? 'Sundry Blossom') . ' - ' . ($siteSettings['site_tagline'] ?? 'Handcrafted & Sustainable Goods'))">
+    <meta property="og:description" content="@yield('og_description', $siteSettings['site_description'] ?? (($siteSettings['site_name'] ?? 'Sundry Blossom') . ' connects skilled artisans and sustainable craftsmanship with global trade partners.'))">
     <meta property="og:url" content="@yield('og_url', url()->current())">
-    <meta property="og:image" content="@yield('og_image', asset('assets/images/cta.webp'))">
+    <meta property="og:image" content="@yield('og_image', $defaultSocialImage)">
 
     <!-- Twitter / X Cards -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="@yield('og_title', ($siteSettings['site_name'] ?? 'Sundry Blossom') . ' - Handcrafted Goods')">
-    <meta name="twitter:description" content="@yield('og_description', $siteSettings['site_description'] ?? 'Sundry Blossom connects skilled artisans.')">
-    <meta name="twitter:image" content="@yield('og_image', asset('assets/images/cta.webp'))">
+    <meta name="twitter:title" content="@yield('og_title', ($siteSettings['site_name'] ?? 'Sundry Blossom') . ' - ' . ($siteSettings['site_tagline'] ?? 'Handcrafted & Sustainable Goods'))">
+    <meta name="twitter:description" content="@yield('og_description', $siteSettings['site_description'] ?? (($siteSettings['site_name'] ?? 'Sundry Blossom') . ' connects skilled artisans and sustainable craftsmanship with global trade partners.'))">
+    <meta name="twitter:image" content="@yield('og_image', $defaultSocialImage)">
 
     <!-- Structured Data (JSON-LD) -->
     @yield('structured_data')

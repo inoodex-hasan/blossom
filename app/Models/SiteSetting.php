@@ -26,7 +26,7 @@ class SiteSetting extends Model
                 return $default;
             }
             $setting = self::where('key', $key)->first();
-            return $setting ? $setting->value : $default;
+            return ($setting && filled($setting->value)) ? $setting->value : $default;
         } catch (\Throwable $e) {
             return $default;
         }

@@ -183,5 +183,60 @@ class AdminTest extends TestCase
         $response = $this->actingAs($this->admin)->get('/admin/manage-site-settings');
         $response->assertStatus(200);
         $response->assertSee('Store &amp; Contact Settings', false);
+        $response->assertSee('Brand Identity &amp; Visual Assets', false);
+    }
+
+    public function test_admin_can_save_site_settings_form(): void
+    {
+        \Livewire\Livewire::actingAs($this->admin)
+            ->test(\App\Filament\Pages\ManageSiteSettings::class)
+            ->fillForm([
+                'site_name' => 'Custom Artisan Store',
+                'site_tagline' => 'Handcrafted Excellence',
+                'contact_email' => 'artisan@blossom.com',
+            ])
+            ->call('save')
+            ->assertHasNoFormErrors();
+
+        $this->assertEquals('Custom Artisan Store', SiteSetting::get('site_name'));
+        $this->assertEquals('Handcrafted Excellence', SiteSetting::get('site_tagline'));
+        $this->assertEquals('artisan@blossom.com', SiteSetting::get('contact_email'));
+    }
+
+    public function test_site_settings_page_renders_current_logo_and_favicon(): void
+    {
+        SiteSetting::set('site_logo', 'site-settings/test-logo.webp');
+        SiteSetting::set('site_favicon', 'site-settings/test-fav.png');
+
+        $response = $this->actingAs($this->admin)->get('/admin/manage-site-settings');
+        $response->assertStatus(200);
+        $response->assertSee('Current Brand Logo');
+        $response->assertSee('Current Browser Favicon');
+        $response->assertSee('test-logo.webp');
+        $response->assertSee('test-fav.png');
+    }
+
+    public function test_frontend_displays_custom_logo_and_favicon_when_set(): void
+    {
+        SiteSetting::set('site_name', 'Crafted Bloom');
+        SiteSetting::set('site_logo', 'site-settings/crafted-bloom-logo.webp');
+        SiteSetting::set('site_favicon', 'site-settings/crafted-bloom-fav.png');
+
+        $response = $this->get('/');
+        $response->assertStatus(200);
+        $response->assertSee('storage/site-settings/crafted-bloom-logo.webp');
+        $response->assertSee('storage/site-settings/crafted-bloom-fav.png');
+    }
+
+    public function test_frontend_displays_fallback_when_logo_and_favicon_are_null(): void
+    {
+        SiteSetting::set('site_name', 'Sundry Blossom');
+        SiteSetting::set('site_logo', null);
+        SiteSetting::set('site_favicon', null);
+
+        $response = $this->get('/');
+        $response->assertStatus(200);
+        $response->assertSee('favicon.ico');
+        $response->assertSee('Sundry Blossom');
     }
 }

@@ -12,6 +12,10 @@ class SiteSettingSeeder extends Seeder
         $settings = [
             'site_name' => 'Sundry Blossom',
             'site_tagline' => 'Handcrafted & Sustainable Goods',
+            'site_description' => 'Sundry Blossom connects skilled artisans and sustainable craftsmanship with global trade partners. Explore our curated collections of handcrafted textiles, home decor, and natural goods.',
+            'site_keywords' => 'handcrafted goods, sustainable textiles, artisan homeware, trade inquiry, ethical sourcing, Sundry Blossom',
+            'site_logo' => null,
+            'site_favicon' => null,
             'contact_phone' => '+880 4767 775689',
             'contact_phone_display' => '04767775689',
             'contact_email' => 'sundryblossom@gmail.com',

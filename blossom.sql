@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 29, 2026 at 11:07 AM
+-- Generation Time: Aug 30, 2026 at 11:21 AM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.28
 
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cache` (
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `value` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `expiration` bigint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -40,8 +40,8 @@ CREATE TABLE `cache` (
 --
 
 CREATE TABLE `cache_locks` (
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `owner` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `owner` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `expiration` bigint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -53,10 +53,10 @@ CREATE TABLE `cache_locks` (
 
 CREATE TABLE `contact_messages` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_read` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -70,11 +70,11 @@ CREATE TABLE `contact_messages` (
 
 CREATE TABLE `failed_jobs` (
   `id` bigint UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -86,11 +86,11 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `hero_slides` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `subtitle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `link_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `link_text` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subtitle` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `link_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `link_text` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `sort_order` int NOT NULL DEFAULT '0',
   `is_active` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -114,14 +114,14 @@ INSERT INTO `hero_slides` (`id`, `title`, `subtitle`, `image`, `link_url`, `link
 
 CREATE TABLE `inquiries` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `company_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `company_details` text COLLATE utf8mb4_unicode_ci,
-  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_details` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -134,8 +134,8 @@ CREATE TABLE `inquiries` (
 
 CREATE TABLE `jobs` (
   `id` bigint UNSIGNED NOT NULL,
-  `queue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `attempts` smallint UNSIGNED NOT NULL,
   `reserved_at` int UNSIGNED DEFAULT NULL,
   `available_at` int UNSIGNED NOT NULL,
@@ -149,13 +149,13 @@ CREATE TABLE `jobs` (
 --
 
 CREATE TABLE `job_batches` (
-  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `total_jobs` int NOT NULL,
   `pending_jobs` int NOT NULL,
   `failed_jobs` int NOT NULL,
-  `failed_job_ids` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `options` mediumtext COLLATE utf8mb4_unicode_ci,
+  `failed_job_ids` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `options` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `cancelled_at` int DEFAULT NULL,
   `created_at` int NOT NULL,
   `finished_at` int DEFAULT NULL
@@ -169,7 +169,7 @@ CREATE TABLE `job_batches` (
 
 CREATE TABLE `migrations` (
   `id` int UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -197,11 +197,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `our_stories` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `short_description` text COLLATE utf8mb4_unicode_ci,
-  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `short_description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -220,8 +220,8 @@ INSERT INTO `our_stories` (`id`, `title`, `slug`, `short_description`, `content`
 --
 
 CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -233,14 +233,14 @@ CREATE TABLE `password_reset_tokens` (
 
 CREATE TABLE `products` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `long_description` longtext COLLATE utf8mb4_unicode_ci,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `long_description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `highlights` json DEFAULT NULL,
   `style_guidance` json DEFAULT NULL,
   `partnerships` json DEFAULT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -254,7 +254,9 @@ INSERT INTO `products` (`id`, `name`, `slug`, `description`, `long_description`,
 (2, 'Cotton', 'cotton', 'Premium quality cotton products for everyday comfort.', 'Our cotton products are crafted from the finest natural fibers, ensuring softness and durability. We work with skilled artisans to bring you premium cotton goods.\n\nEach piece is made with care, combining traditional weaving techniques with modern design sensibilities.', '[\"Organic Cotton Fabrics\", \"Handwoven Textiles\", \"Cotton Home Linens\", \"Cotton Garment Fabrics\", \"Custom Dyeing Services\"]', '[\"Choose organic for sustainability\", \"Mix textures for depth\", \"Pair with natural materials\", \"Layer for warmth and style\", \"Care with gentle washing\"]', '[\"Fashion brand collaborations\", \"Interior design supply\", \"Bulk fabric orders\", \"Custom color development\", \"Sustainable sourcing programs\"]', 'products/cotton.jpeg', '2026-08-25 02:42:28', '2026-08-25 02:42:28'),
 (3, 'Garments', 'garments', 'Handcrafted garments with unique designs and patterns.', 'Our garment collection features handcrafted clothing that blends traditional artistry with contemporary fashion. Each piece tells a story of skilled craftsmanship.\n\nFrom casual wear to formal attire, our garments are designed for comfort and elegance.', '[\"Hand-stitched Apparel\", \"Embroidered Collections\", \"Casual Wear Line\", \"Formal Attire Range\", \"Seasonal Collections\"]', '[\"Layer with complementary pieces\", \"Accessorize thoughtfully\", \"Choose quality over quantity\", \"Invest in versatile staples\", \"Express personal style\"]', '[\"Boutique retail supply\", \"Online store partnerships\", \"Custom design services\", \"Bulk order discounts\", \"Private label manufacturing\"]', 'products/garments1.jpeg', '2026-08-25 02:42:28', '2026-08-25 02:42:28'),
 (4, 'Home Decor', 'home-decor', 'Beautiful home decor items to brighten your living space.', 'The biggest shift in home decor is a move toward spaces that feel warm, personal, and lived-in. We embrace warm minimalism with layered neutrals, natural materials, and spaces that prioritize emotional comfort.\n\nTransform any room with our carefully curated home decor products. We blend warm minimalism with functional design to create pieces that feel both beautiful and comfortable.', '[\"Handwoven rugs and floor mats\", \"Ceramic and terracotta pottery\", \"Wooden furniture accents\", \"Textured wall panels and hangings\", \"Natural fiber baskets and storage\"]', '[\"Mix textures for visual depth\", \"Layer neutrals with accent tones\", \"Balance open space with statement pieces\", \"Incorporate natural light and organic shapes\", \"Personal touches over showroom perfection\"]', '[\"Interior designer collaboration program\", \"Hotel and hospitality project supply\", \"Custom color and size options\", \"Volume discounts for project orders\", \"Showroom visits by appointment\"]', 'products/home-decor.jpeg', '2026-08-25 02:42:28', '2026-08-25 02:42:28'),
-(5, 'Accessories', 'accessories', 'Stylish accessories to complement your look.', 'Our accessories collection adds the perfect finishing touch to any outfit or space. Handcrafted with attention to detail, each piece is unique.\n\nFrom bags to jewelry, our accessories are designed to complement your personal style with artisan quality.', '[\"Handcrafted Bags\", \"Artisan Jewelry\", \"Woven Baskets\", \"Decorative Items\", \"Gift Collections\"]', '[\"Choose statement pieces wisely\", \"Mix materials for contrast\", \"Keep it minimal and elegant\", \"Match with your outfit palette\", \"Quality over quantity always\"]', '[\"Fashion accessory boutiques\", \"Gift shop distribution\", \"Custom branding available\", \"Wholesale pricing tiers\", \"Consignment opportunities\"]', 'products/accessories.jpeg', '2026-08-25 02:42:28', '2026-08-25 02:42:28');
+(5, 'Accessories', 'accessories', 'Stylish accessories to complement your look.', 'Our accessories collection adds the perfect finishing touch to any outfit or space. Handcrafted with attention to detail, each piece is unique.\n\nFrom bags to jewelry, our accessories are designed to complement your personal style with artisan quality.', '[\"Handcrafted Bags\", \"Artisan Jewelry\", \"Woven Baskets\", \"Decorative Items\", \"Gift Collections\"]', '[\"Choose statement pieces wisely\", \"Mix materials for contrast\", \"Keep it minimal and elegant\", \"Match with your outfit palette\", \"Quality over quantity always\"]', '[\"Fashion accessory boutiques\", \"Gift shop distribution\", \"Custom branding available\", \"Wholesale pricing tiers\", \"Consignment opportunities\"]', 'products/accessories.jpeg', '2026-08-25 02:42:28', '2026-08-25 02:42:28'),
+(7, 'Web Page Graphics Visualizations', 'web-page-graphics-visualizations', 'An IT-related DAW refers to a Digital Audio Workstation viewed through the lens of information technology, functioning as a specialized software', '<p>An IT-related DAW refers to a Digital Audio Workstation viewed through the lens of information technology, functioning as a specialized software application running on computer hardware (CPU, RAM, storage) and interfacing with operating systems (Windows, macOS, Linux), specialized device drivers (like ASIO or Core Audio), and external peripheral hardware (USB audio interfaces and MIDI controllers).</p>', '[\"Test\"]', '[\"Test\"]', '[\"Test\"]', 'products/Bk8RkbN4J9c1oDkwKXa2OuRqdJtbjK8j7h6CJbZi.webp', '2026-08-30 05:18:17', '2026-08-30 05:18:17'),
+(8, 'Others', 'others', 'An IT-related DAW refers to a Digital Audio Workstation viewed through the lens of information technology, functioning as a specialized software', '<p>To craft compelling description text, focus on translating the features of your product, service, or project into tangible benefits for your audience. Strong copy bridges the gap between what something is and why someone should care.</p>', '[\"Test\"]', '[\"Test\"]', '[\"Test\"]', 'products/ckjeEg3xF6eo3ERSLeKjGzI0sGP4NmazIlAqVfBl.webp', '2026-08-30 05:19:31', '2026-08-30 05:19:31');
 
 -- --------------------------------------------------------
 
@@ -263,11 +265,11 @@ INSERT INTO `products` (`id`, `name`, `slug`, `description`, `long_description`,
 --
 
 CREATE TABLE `sessions` (
-  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` bigint UNSIGNED DEFAULT NULL,
-  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_agent` text COLLATE utf8mb4_unicode_ci,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ip_address` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_agent` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `last_activity` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -279,9 +281,9 @@ CREATE TABLE `sessions` (
 
 CREATE TABLE `site_settings` (
   `id` bigint UNSIGNED NOT NULL,
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `value` longtext COLLATE utf8mb4_unicode_ci,
-  `group` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'general',
+  `key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `group` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'general',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -292,7 +294,7 @@ CREATE TABLE `site_settings` (
 
 INSERT INTO `site_settings` (`id`, `key`, `value`, `group`, `created_at`, `updated_at`) VALUES
 (1, 'site_name', 'Sundry Blossom', 'general', '2026-08-25 02:42:28', '2026-08-25 02:42:28'),
-(2, 'site_tagline', 'Handcrafted & Sustainable Goods', 'general', '2026-08-25 02:42:28', '2026-08-25 02:42:28'),
+(2, 'site_tagline', 'Connecting Your Creations to Global Sales', 'general', '2026-08-25 02:42:28', '2026-08-30 02:56:55'),
 (3, 'contact_phone', '+880 4767 775689', 'general', '2026-08-25 02:42:28', '2026-08-25 02:42:28'),
 (4, 'contact_phone_display', '04767775689', 'general', '2026-08-25 02:42:28', '2026-08-25 02:42:28'),
 (5, 'contact_email', 'sundryblossom@gmail.com', 'general', '2026-08-25 02:42:28', '2026-08-25 02:42:28'),
@@ -308,11 +310,11 @@ INSERT INTO `site_settings` (`id`, `key`, `value`, `group`, `created_at`, `updat
 
 CREATE TABLE `users` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -479,7 +481,7 @@ ALTER TABLE `our_stories`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `site_settings`

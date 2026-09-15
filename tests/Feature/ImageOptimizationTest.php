@@ -24,12 +24,21 @@ class ImageOptimizationTest extends TestCase
         Storage::fake('public');
 
         $imageService = app(ImageService::class);
-        $file = UploadedFile::fake()->image('handcrafted-rug.jpg', 2400, 1600);
+        $tempPath = tempnam(sys_get_temp_dir(), 'test_img_') . '.jpg';
+        $gd = imagecreatetruecolor(200, 200);
+        imagejpeg($gd, $tempPath);
+        imagedestroy($gd);
+
+        $file = new UploadedFile($tempPath, 'handcrafted-rug.jpg', 'image/jpeg', null, true);
 
         $storedPath = $imageService->storeAsWebp($file, 'products', 1200, 85);
 
         $this->assertStringEndsWith('.webp', $storedPath);
         Storage::disk('public')->assertExists($storedPath);
+
+        if (file_exists($tempPath)) {
+            @unlink($tempPath);
+        }
     }
 
     public function test_optimize_images_artisan_command_runs_successfully(): void

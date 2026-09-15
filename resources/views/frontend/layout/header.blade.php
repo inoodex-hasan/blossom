@@ -5,12 +5,18 @@
 
             <!-- Logo + Title -->
             <a href="{{ route('home') }}" class="flex items-center gap-2.5 shrink-0">
-                <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border-2 border-[#1B3B5A] flex items-center justify-center">
-                    <span class="text-sm sm:text-base font-serif font-bold text-[#1B3B5A]">SB</span>
-                </div>
+                @if(!empty($siteSettings['site_logo']))
+                    <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}" class="h-9 sm:h-11 w-auto max-w-[160px] object-contain">
+                @else
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border-2 border-[#1B3B5A] flex items-center justify-center">
+                        <span class="text-sm sm:text-base font-serif font-bold text-[#1B3B5A]">
+                            {{ strtoupper(substr($siteSettings['site_name'] ?? 'Sundry Blossom', 0, 1)) }}{{ strtoupper(substr(strrchr($siteSettings['site_name'] ?? 'Sundry Blossom', ' ') ?: 'B', 1, 1)) }}
+                        </span>
+                    </div>
+                @endif
                 <div class="flex flex-col leading-none">
                     <span class="text-base sm:text-xl font-serif font-bold tracking-wide text-[#1B3B5A]">{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}</span>
-                    <span class="text-[8px] sm:text-[10px] font-serif tracking-[0.15em] text-slate-500 uppercase">Import and Export Agency</span>
+                    <span class="text-[8px] sm:text-[10px] font-serif tracking-[0.15em] text-slate-500 uppercase">{{ $siteSettings['site_tagline'] ?? 'Handcrafted & Sustainable Goods' }}</span>
                 </div>
             </a>
 
