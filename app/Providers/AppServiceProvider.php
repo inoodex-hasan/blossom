@@ -26,9 +26,46 @@ class AppServiceProvider extends ServiceProvider
     {
         if (
             config('app.env') === 'production' ||
-            (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')
+            (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') ||
+            (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ||
+            str_starts_with(config('app.url', ''), 'https://')
         ) {
             URL::forceScheme('https');
+        }
+
+        // Ensure critical storage directories exist for Livewire & Filament temporary uploads
+        try {
+            $storageDirs = [
+                storage_path('app/private/livewire-tmp'),
+                storage_path('app/livewire-tmp'),
+                storage_path('app/public/hero-slides'),
+                storage_path('app/public/products'),
+                storage_path('app/public/our-stories'),
+                storage_path('app/public/site-settings'),
+                storage_path('framework/cache/data'),
+                storage_path('framework/sessions'),
+                storage_path('framework/views'),
+            ];
+
+            foreach ($storageDirs as $dir) {
+                if (!file_exists($dir)) {
+                    @mkdir($dir, 0777, true);
+                }
+                @chmod($dir, 0777);
+            }
+        } catch (\Throwable $e) {
+            // Graceful fallback
+        }
+
+        // Auto-heal missing database columns on live environments if migration not yet run
+        try {
+            if (Schema::hasTable('our_stories') && !Schema::hasColumn('our_stories', 'video_url')) {
+                Schema::table('our_stories', function (\Illuminate\Database\Schema\Blueprint $table) {
+                    $table->string('video_url')->nullable()->after('image');
+                });
+            }
+        } catch (\Throwable $e) {
+            // Graceful fallback
         }
 
         // Share global dynamic data with all views
