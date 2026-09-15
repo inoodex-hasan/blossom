@@ -128,14 +128,13 @@ class OurStoryResource extends Resource
                                     ->directory('our-stories')
                                     ->disk('public')
                                     ->visibility('public')
-                                    ->maxSize(5120)
+                                    ->maxSize(10240)
                                     ->formatStateUsing(fn () => null)
                                     ->dehydrated(fn ($state) => filled($state))
                                     ->saveUploadedFileUsing(fn (\Illuminate\Http\UploadedFile $file): string => app(\App\Services\ImageService::class)->storeAsWebp($file, 'our-stories', 1920, 85))
                                     ->helperText('Drag & drop or browse a photo (auto-optimized & converted to WebP).')
                                     ->columnSpanFull()
-                                    ->hidden(fn (string $operation): bool => $operation === 'view')
-                                    ->required(fn (string $operation): bool => $operation === 'create'),
+                                    ->hidden(fn (string $operation): bool => $operation === 'view'),
                             ]),
                     ])
                     ->columnSpan(['lg' => 1]),
