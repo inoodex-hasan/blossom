@@ -6,7 +6,7 @@
             <!-- Logo + Title -->
             <a href="{{ route('home') }}" class="flex items-center gap-1.5 sm:gap-2.5 shrink-0 min-w-0">
                 @if(!empty($siteSettings['site_logo']))
-                    <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}" class="h-8 sm:h-12 lg:h-14 w-auto max-w-[120px] sm:max-w-[180px] object-contain shrink-0">
+                    <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}" class="h-auto max-h-[48px] sm:max-h-[60px] lg:max-h-[70px] w-auto max-w-[140px] sm:max-w-[200px] lg:max-w-[250px] object-contain shrink-0">
                 @else
                     <div class="w-8 h-8 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full border-2 border-[#1B3B5A] flex items-center justify-center shrink-0">
                         <span class="text-xs sm:text-sm font-serif font-bold text-[#1B3B5A]">
@@ -50,12 +50,11 @@
 
                 <!-- Products Dropdown -->
                 <div class="relative group">
-                    <button type="button" class="text-sm font-semibold tracking-wider text-[#1B3B5A] uppercase flex items-center gap-1.5 cursor-pointer hover:text-[#03a8f4] transition-colors">
+                    <a href="{{ route('products.index') }}" class="text-sm font-semibold tracking-wider text-[#1B3B5A] uppercase flex items-center gap-1.5 hover:text-[#03a8f4] transition-colors">
                          Products and Services
                         <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
+                    </a>
                     <div class="absolute top-full left-0 mt-2 w-52 bg-white rounded-xl shadow-xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                        <a href="{{ route('products.index') }}" class="block px-4 py-2 text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-50 hover:bg-slate-50">All Collections</a>
                         @foreach($headerProducts as $product)
                             <a href="{{ route('products.show', $product->slug) }}" class="block px-4 py-2.5 text-sm font-medium text-[#1B3B5A] hover:bg-slate-50 hover:text-[#03a8f4] transition-colors">
                                 {{ $product->name }}
@@ -75,11 +74,10 @@
         <a href="{{ route('our-story') }}" class="block py-3 px-4 rounded-lg {{ request()->routeIs('our-story*') ? 'text-[#1B3B5A] bg-slate-100' : 'text-[#1B3B5A]' }} font-medium">Our Story</a>
         <div>
             <button id="products-toggle" onclick="toggleProductsSubmenu(event)" type="button" class="w-full flex items-center justify-between py-3 px-4 rounded-lg text-[#1B3B5A] font-medium cursor-pointer">
-                Our Products
+                Products and Services
                 <svg id="products-arrow" class="w-4 h-4 transition-transform duration-200 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
             <div id="products-submenu" class="hidden pl-6 space-y-1">
-                <a href="{{ route('products.index') }}" class="block py-2 px-4 text-xs font-semibold uppercase tracking-wider text-slate-400">All Collections</a>
                 @foreach($headerProducts as $product)
                     <a href="{{ route('products.show', $product->slug) }}" class="block py-2 px-4 text-sm text-[#1B3B5A]/80 hover:text-[#1B3B5A]">{{ $product->name }}</a>
                 @endforeach

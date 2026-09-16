@@ -8,9 +8,7 @@
         <a href="{{ route('our-story') }}" class="group block rounded-2xl overflow-hidden shadow-md min-h-[200px] sm:min-h-0 relative">
             <img src="{{ $ourStory->image_url ?? asset('assets/images/cta.jpeg') }}" alt="Our Story" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-transparent"></div>
-            <div class="absolute top-0 left-0 right-0 p-5 sm:p-8">
-                  <a href="{{ route('our-story') }}" class="text-[10px] sm:text-xs font-bold tracking-[0.2em] text-white uppercase">Our Story</a>      
-            </div>
+        
             
         </a>
         <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-5 sm:p-8 shadow-sm flex flex-col justify-between">
@@ -21,6 +19,10 @@
                 <p class="mt-4 sm:mt-6 text-sm text-slate-500 leading-relaxed">
                     {{ $ourStory->short_description ?? 'Founded in 2018, Sundry Blossom has grown into a trusted name for handcrafted and sourced products. With a passion for quality and authenticity, we bring you the finest from across Bangladesh and beyond.' }}
                 </p>
+                <a href="{{ url('/our-story/' . $ourStory->slug) }}" class="mt-6 sm:mt-8 inline-flex items-center gap-2 bg-[#03a8f4] text-white px-5 sm:px-6 py-2.5 rounded-lg font-medium text-xs uppercase tracking-wider">
+                    Read More
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
             </div>
         </div>
     </div>
