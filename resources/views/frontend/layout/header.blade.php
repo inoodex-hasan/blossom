@@ -63,7 +63,8 @@
                     </div>
                 </div>
 
-                <a href="{{ route('contact') }}" class="text-sm font-semibold tracking-wider text-[#1B3B5A] uppercase hover:text-[#03a8f4] transition-colors">Contact</a>
+                <a href="{{ route('contact') }}" class="text-xs sm:text-sm font-semibold tracking-wider text-[#1B3B5A] uppercase hover:text-[#03a8f4] transition-colors">Contact</a>
+                <button onclick="openInquiryModal()" type="button" class="bg-[#03a8f4] hover:bg-[#0284c7] cursor-pointer text-white px-5 py-2 rounded-lg font-semibold text-xs uppercase tracking-wider transition-colors">Inquiry</button>
             </div>
         </div>
     </div>
