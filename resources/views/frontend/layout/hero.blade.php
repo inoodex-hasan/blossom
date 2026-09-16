@@ -36,7 +36,7 @@
             }"
             @mouseenter="stopAutoplay()"
             @mouseleave="startAutoplay()"
-            class="relative w-full h-[180px] xs:h-[200px] sm:h-[240px] md:h-[340px] lg:h-[600px] xl:h-[640px] rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden shadow-xl shadow-black/20">
+            class="relative w-full h-[200px] xs:h-[220px] sm:h-[240px] md:h-[340px] lg:h-[600px] xl:h-[640px] rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden shadow-xl shadow-black/20">
 
             <!-- Slides Container -->
             @foreach($slides as $index => $slide)
