@@ -1,4 +1,4 @@
-<nav class="bg-white shadow-sm sticky top-0 z-50">
+<nav class="bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
     <!-- Top Row: Logo + Search + Inquiry -->
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-14 sm:h-16 lg:h-18 gap-2 sm:gap-4">
@@ -70,7 +70,7 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden bg-white border-t px-4 pb-6 pt-2 space-y-1 shadow-lg hidden">
+    <div id="mobile-menu" class="md:hidden fixed inset-0 bg-white z-50 px-4 pb-6 pt-4 space-y-1 shadow-lg hidden overflow-y-auto" style="top: 56px;">
         <a href="{{ route('home') }}" class="block py-3 px-4 rounded-lg {{ request()->routeIs('home') ? 'text-[#1B3B5A] bg-slate-100' : 'text-[#1B3B5A]' }} font-medium">Home</a>
         <a href="{{ route('our-story') }}" class="block py-3 px-4 rounded-lg {{ request()->routeIs('our-story*') ? 'text-[#1B3B5A] bg-slate-100' : 'text-[#1B3B5A]' }} font-medium">Our Story</a>
         <div>

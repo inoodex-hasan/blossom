@@ -240,11 +240,13 @@
             if (mobileMenu) {
                 if (isMobileMenuOpen) {
                     mobileMenu.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
                     if (bar1) bar1.style.transform = 'translateY(8px) rotate(45deg)';
                     if (bar2) bar2.style.opacity = '0';
                     if (bar3) bar3.style.transform = 'translateY(-8px) rotate(-45deg)';
                 } else {
                     mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
                     if (bar1) bar1.style.transform = '';
                     if (bar2) bar2.style.opacity = '1';
                     if (bar3) bar3.style.transform = '';
