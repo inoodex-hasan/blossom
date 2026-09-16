@@ -6,7 +6,7 @@
             <!-- Logo + Title -->
             <a href="{{ route('home') }}" class="flex items-center gap-1.5 sm:gap-2.5 shrink-0 min-w-0">
                 @if(!empty($siteSettings['site_logo']))
-                    <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}" class="h-auto max-h-[48px] sm:max-h-[60px] lg:max-h-[70px] w-auto max-w-[140px] sm:max-w-[200px] lg:max-w-[250px] object-contain shrink-0">
+                    <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}" class="h-auto max-h-[56px] sm:max-h-[72px] lg:max-h-[80px] w-auto max-w-[160px] sm:max-w-[220px] lg:max-w-[280px] object-contain shrink-0">
                 @else
                     <div class="w-8 h-8 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full border-2 border-[#1B3B5A] flex items-center justify-center shrink-0">
                         <span class="text-xs sm:text-sm font-serif font-bold text-[#1B3B5A]">

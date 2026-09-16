@@ -4,7 +4,7 @@
         <h2 class="text-2xl sm:text-3xl font-serif italic text-[#1B3B5A] mb-2">History</h2>
         <p class="text-sm sm:text-base font-bold text-slate-600 mb-6 sm:mb-8">A glimpse into the artistry and tradition behind every creation.</p>
 
-        <div class="rounded-xl overflow-hidden shadow-sm bg-slate-900 aspect-video">
+        <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-[#1B3B5A]/10 bg-slate-900 aspect-video">
             <video class="w-full h-full object-cover" autoplay muted loop playsinline>
                 <source src="{{ asset('assets/videos/Handloom.mp4') }}" type="video/mp4">
             </video>
