@@ -3,7 +3,7 @@
 @endphp
 
 <!-- Hero Banner / Slider -->
-<section class="w-full relative select-none px-2 sm:px-4 md:px-5 lg:px-16">
+<section class="w-full relative select-none px-3 sm:px-5 md:px-6 lg:px-10 -mt-1 sm:-mt-2">
     @if($slides->count() > 0)
         <div x-data="{
                 active: 0,

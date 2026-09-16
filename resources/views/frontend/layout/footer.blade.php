@@ -67,7 +67,7 @@
             </div>
         </div>
         <div class="flex justify-center mt-4">
-            <button onclick="scrollToTop(event)" class="flex items-center gap-2 text-xs text-white/50 hover:text-white/80 transition cursor-pointer">
+            <button onclick="scrollToTop(event)" class="flex items-center gap-2 text-xs text-white hover:text-white/80 transition cursor-pointer">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
                 <span>Back to top</span>
             </button>
