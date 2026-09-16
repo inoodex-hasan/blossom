@@ -16,7 +16,7 @@
                 @endif
                 <div class="flex flex-col leading-none min-w-0">
                     <span class="text-base sm:text-xl font-serif font-bold tracking-wide text-[#1B3B5A] truncate">{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}</span>
-                    <span class="text-[8px] sm:text-[10px] font-serif tracking-[0.15em] text-slate-500 uppercase truncate">{{ $siteSettings['site_tagline'] ?? 'Handcrafted & Sustainable Goods' }}</span>
+                    <span class="text-[8px] sm:text-[10px] font-serif tracking-[0.15em] text-slate-500 uppercase truncate">Import and Export Agency</span>
                 </div>
             </a>
 
