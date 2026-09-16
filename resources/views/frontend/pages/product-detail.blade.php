@@ -44,7 +44,7 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <!-- Left Image Column -->
-            <div class="lg:col-span-6 sticky top-24">
+            <div class="lg:col-span-6 lg:sticky lg:top-24">
                 <div class="rounded-3xl overflow-hidden shadow-xl bg-slate-100 aspect-4/3 sm:aspect-square">
                     <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
                 </div>
