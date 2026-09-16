@@ -15,8 +15,8 @@
                     </div>
                 @endif
                 <div class="flex flex-col leading-none min-w-0">
-                    <span class="text-sm sm:text-lg lg:text-xl font-serif font-bold tracking-wide text-[#1B3B5A] truncate">{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}</span>
-                    <span class="text-[7px] sm:text-[9px] lg:text-[10px] font-serif tracking-[0.12em] sm:tracking-[0.15em] text-slate-500 uppercase truncate">{{ $siteSettings['site_tagline'] ?? 'Handcrafted & Sustainable Goods' }}</span>
+                    <span class="text-base sm:text-xl font-serif font-bold tracking-wide text-[#1B3B5A] truncate">{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}</span>
+                    <span class="text-[8px] sm:text-[10px] font-serif tracking-[0.15em] text-slate-500 uppercase truncate">{{ $siteSettings['site_tagline'] ?? 'Handcrafted & Sustainable Goods' }}</span>
                 </div>
             </a>
 
@@ -45,12 +45,12 @@
     <div class="hidden md:block border-t border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-center gap-8 lg:gap-12 py-3">
-                <a href="{{ route('home') }}" class="text-sm font-semibold tracking-wider text-[#1B3B5A] uppercase hover:text-[#03a8f4] transition-colors">Home</a>
-                <a href="{{ route('our-story') }}" class="text-sm font-semibold tracking-wider text-[#1B3B5A] uppercase hover:text-[#03a8f4] transition-colors">Our Story</a>
+                <a href="{{ route('home') }}" class="text-xs sm:text-sm font-semibold tracking-wider text-[#1B3B5A] uppercase hover:text-[#03a8f4] transition-colors">Home</a>
+                <a href="{{ route('our-story') }}" class="text-xs sm:text-sm font-semibold tracking-wider text-[#1B3B5A] uppercase hover:text-[#03a8f4] transition-colors">Our Story</a>
 
                 <!-- Products Dropdown -->
                 <div class="relative group">
-                    <a href="{{ route('products.index') }}" class="text-sm font-semibold tracking-wider text-[#1B3B5A] uppercase flex items-center gap-1.5 hover:text-[#03a8f4] transition-colors">
+                    <a href="{{ route('products.index') }}" class="text-xs sm:text-sm font-semibold tracking-wider text-[#1B3B5A] uppercase flex items-center gap-1.5 hover:text-[#03a8f4] transition-colors">
                          Products and Services
                         <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </a>

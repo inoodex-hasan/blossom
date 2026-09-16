@@ -3,7 +3,7 @@
 @endphp
 
 <!-- Hero Banner / Slider -->
-<section class="w-full relative select-none px-2 sm:px-4 md:px-5 lg:px-0">
+<section class="w-full relative select-none px-2 sm:px-4 md:px-5 lg:px-16">
     @if($slides->count() > 0)
         <div x-data="{
                 active: 0,
@@ -36,7 +36,7 @@
             }"
             @mouseenter="stopAutoplay()"
             @mouseleave="startAutoplay()"
-            class="relative w-full h-[240px] xs:h-[300px] sm:h-[380px] md:h-[460px] lg:h-[540px] xl:h-[600px] rounded-lg sm:rounded-xl lg:rounded-none overflow-hidden shadow-xl shadow-black/20">
+            class="relative w-full h-[240px] xs:h-[300px] sm:h-[380px] md:h-[460px] lg:h-[540px] xl:h-[600px] rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden shadow-xl shadow-black/20">
 
             <!-- Slides Container -->
             @foreach($slides as $index => $slide)
