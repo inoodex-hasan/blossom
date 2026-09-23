@@ -38,7 +38,8 @@
             <a href="{{ route('home') }}" class="hover:text-slate-700 transition">Home</a>
             <span>/</span>
          
-            <span>/</span>
+            
+            
             <span class="text-slate-700">{{ $product->name }}</span>
         </nav>
 
