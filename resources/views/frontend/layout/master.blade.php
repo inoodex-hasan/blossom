@@ -103,6 +103,17 @@
     </script>
     <style>
         [x-cloak] { display: none !important; }
+
+        /* Hide Google Translate floating banner / frames */
+        .goog-te-banner-frame.skiptranslate,
+        .goog-te-banner-frame,
+        #goog-gt-tt,
+        .goog-te-balloon-frame,
+        .goog-te-spin-pos {
+            display: none !important;
+        }
+        body { top: 0px !important; }
+        .goog-te-gadget { font-size: 0; }
         
         /* SweetAlert2 Custom Styling */
         .swal2-popup.blossom-alert-popup {
