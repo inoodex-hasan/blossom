@@ -45,8 +45,8 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <!-- Left Image Column -->
             <div class="lg:col-span-7 lg:sticky lg:top-32">
-                <div class="rounded-3xl overflow-hidden bg-slate-50 border border-slate-100 flex items-center justify-center">
-                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-auto object-contain">
+                <div class="rounded-3xl overflow-hidden shadow-sm w-full max-w-xl aspect-[16/9] bg-slate-100">
+                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
                 </div>
             </div>
 
