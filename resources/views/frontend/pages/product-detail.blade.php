@@ -37,7 +37,7 @@
         <nav class="mb-8 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
             <a href="{{ route('home') }}" class="hover:text-slate-700 transition">Home</a>
             <span>/</span>
-            <a href="{{ route('products.index') }}" class="hover:text-slate-700 transition">Collections</a>
+         
             <span>/</span>
             <span class="text-slate-700">{{ $product->name }}</span>
         </nav>
