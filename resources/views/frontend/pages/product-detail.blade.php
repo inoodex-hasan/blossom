@@ -31,7 +31,7 @@
 @endsection
 
 @section('content')
-<section class="py-12 sm:py-16 px-5 sm:px-10 lg:px-16">
+<section class="pt-20 sm:pt-24 pb-12 sm:pb-16 px-5 sm:px-10 lg:px-16">
     <div class="max-w-6xl mx-auto">
         <!-- Breadcrumbs -->
         <nav class="mb-8 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
@@ -44,16 +44,15 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <!-- Left Image Column -->
-            <div class="lg:col-span-6 lg:sticky lg:top-24">
-                <div class="rounded-3xl overflow-hidden shadow-xl bg-slate-100 aspect-4/3 sm:aspect-square">
-                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
+            <div class="lg:col-span-7 lg:sticky lg:top-32">
+                <div class="rounded-3xl overflow-hidden bg-slate-50 border border-slate-100 flex items-center justify-center">
+                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-auto object-contain">
                 </div>
             </div>
 
             <!-- Right Content Column -->
-            <div class="lg:col-span-6 flex flex-col">
+            <div class="lg:col-span-5 flex flex-col">
                 <div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-[#0EA5E9]">Collection</span>
                     <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1B3B5A] leading-[1.05]">{{ $product->name }}</h1>
 
                     @if($product->description)

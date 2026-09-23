@@ -42,8 +42,26 @@
     <!-- Structured Data (JSON-LD) -->
     @yield('structured_data')
 
+    <!-- Google Fonts for Bengali & English -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body { background-color: #fdf6f0; }
+        body { 
+            background-color: #fdf6f0; 
+            font-family: 'Hind Siliguri', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            padding-top: 56px;
+        }
+        @media (min-width: 640px) { body { padding-top: 64px; } }
+        @media (min-width: 768px) { body { padding-top: 104px; } }
+        @media (min-width: 1024px) { body { padding-top: 116px; } }
+        .bangla-text {
+            font-family: 'Hind Siliguri', system-ui, -apple-system, sans-serif !important;
+            letter-spacing: normal !important;
+            text-transform: none !important;
+            -webkit-text-stroke: 0px !important;
+        }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -115,6 +133,29 @@
             text-transform: uppercase !important;
             box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.3) !important;
             border: none !important;
+        }
+        /* Google Translate Styling & Clean Display */
+        .goog-te-banner-frame.skiptranslate,
+        .goog-te-banner-frame,
+        iframe.goog-te-banner-frame,
+        .goog-te-balloon-frame {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+        }
+        body {
+            top: 0px !important;
+            position: static !important;
+        }
+        #goog-gt-tt, .goog-te-balloon-frame {
+            display: none !important;
+        }
+        .goog-text-highlight {
+            background: none !important;
+            box-shadow: none !important;
+        }
+        .skiptranslate > iframe {
+            display: none !important;
         }
     </style>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -291,7 +332,46 @@
                 window.showErrorAlert('Notice', "{{ session('error') }}");
             });
         @endif
+
+        // Google Translate Global Handler
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,bn',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        function switchLanguage(lang) {
+            var domain = window.location.hostname;
+            var path = '/';
+            // Set cookie for current domain
+            document.cookie = 'googtrans=/en/' + lang + '; path=' + path + '; domain=' + domain;
+            document.cookie = 'googtrans=/en/' + lang + '; path=' + path + ';';
+            
+            // Subdomain handling
+            var parts = domain.split('.');
+            if (parts.length > 2) {
+                document.cookie = 'googtrans=/en/' + lang + '; path=' + path + '; domain=.' + parts.slice(-2).join('.');
+            }
+
+            // Sync google translate combo if loaded
+            var select = document.querySelector('.goog-te-combo');
+            if (select) {
+                select.value = lang;
+                select.dispatchEvent(new Event('change'));
+            } else {
+                location.reload();
+            }
+
+            if (window.updateLangSwitcherUI) {
+                window.updateLangSwitcherUI(lang);
+            }
+        }
+        window.switchLanguage = switchLanguage;
     </script>
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     @yield('scripts')
 </body>
 </html>

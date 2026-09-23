@@ -19,15 +19,15 @@
                 <div>
                     <h3 class="text-xs font-bold tracking-wider text-white/50 uppercase">Email us</h3>
                     <p class="mt-1 text-sm text-white/80">
-                        <a href="mailto:{{ $siteSettings['contact_email'] ?? 'sundryblossom@gmail.com' }}" class="hover:underline">
-                            {{ $siteSettings['contact_email'] ?? 'sundryblossom@gmail.com' }}
+                        <a href="mailto:{{ $siteSettings['contact_email'] ?? 'sunny@sundryblossom.com.au' }}" class="hover:underline">
+                            {{ $siteSettings['contact_email'] ?? 'sunny@sundryblossom.com.au' }}
                         </a>
                     </p>
                 </div>
                 <div>
                     <h3 class="text-xs font-bold tracking-wider text-white/50 uppercase">Website</h3>
                     <p class="mt-1 text-sm text-white/80">
-                        <a href="{{ route('home') }}" class="hover:underline">{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}</a>
+                        <a href="{{ route('home') }}" id="footer-site-name" class="hover:underline notranslate" translate="no">{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}</a>
                     </p>
                 </div>
                 <div>
@@ -61,9 +61,9 @@
     </div>
     <div class="border-t border-white/10 py-5 sm:py-6 px-5 max-w-7xl mx-auto">
         <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p class="text-xs text-white/40">&copy; {{ date('Y') }} {{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}. All rights reserved.</p>
+            <p class="text-xs text-white/40">&copy; {{ date('Y') }} <span id="footer-copyright-name" class="notranslate" translate="no">{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}</span>. All rights reserved.</p>
             <div class="flex items-center gap-4">
-                <p class="text-xs text-white/40">Developed by <a href="https://inoodex.com/" target="_blank" class="text-white/60 hover:text-white transition underline">Inoodex</a></p>
+                <p class="text-xs text-white/40">Developed by <a href="https://inoodex.com/" target="_blank" class="text-white/60 hover:text-white transition underline notranslate" translate="no">Inoodex</a></p>
             </div>
         </div>
         <div class="flex justify-center mt-4">

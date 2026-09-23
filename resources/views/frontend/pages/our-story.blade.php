@@ -47,4 +47,17 @@
         </div>
     </div>
 </section>
+
+<section class="py-12 sm:py-16 px-5 sm:px-10 lg:px-16">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-serif italic text-[#1B3B5A] mb-2">History</h2>
+        <p class="text-sm sm:text-base font-bold text-slate-600 mb-6 sm:mb-8">A glimpse into the artistry and tradition behind every creation.</p>
+
+        <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-[#1B3B5A]/10 bg-slate-900 aspect-video">
+            <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+                <source src="{{ asset('assets/videos/Handloom.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+    </div>
+</section>
 @endsection

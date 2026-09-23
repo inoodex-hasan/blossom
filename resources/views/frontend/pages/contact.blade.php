@@ -61,8 +61,8 @@
                         <div>
                             <h3 class="text-[12px] font-bold font-serif tracking-wider text-[#1B3B5A] uppercase">Email Us</h3>
                             <p class="text-sm font-normal text-[#1B3B5A] mt-1">
-                                <a href="mailto:{{ $siteSettings['contact_email'] ?? 'sundryblossom@gmail.com' }}" class="hover:underline">
-                                    {{ $siteSettings['contact_email'] ?? 'sundryblossom@gmail.com' }}
+                                <a href="mailto:{{ $siteSettings['contact_email'] ?? 'sunny@sundryblossom.com.au' }}" class="hover:underline">
+                                    {{ $siteSettings['contact_email'] ?? 'sunny@sundryblossom.com.au' }}
                                 </a>
                             </p>
                             <p class="text-xs text-slate-400 mt-0.5">{{ $siteSettings['contact_response_time'] ?? 'We reply within 24 hours' }}</p>
