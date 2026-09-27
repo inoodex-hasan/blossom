@@ -51,7 +51,7 @@
                     <h3 class="text-xs font-bold tracking-wider text-white/50 uppercase mb-3">Quick Links</h3>
                     <ul class="space-y-2.5">
                         <li><a href="{{ route('our-story') }}" class="text-sm text-white/80 hover:text-white transition hover:underline">Our Story</a></li>
-                        <li><a href="{{ route('products.index') }}" class="text-sm text-white/80 hover:text-white transition hover:underline">Our Products & Collections</a></li>
+                        <li><a href="{{ route('products.index') }}" class="text-sm text-white/80 hover:text-white transition hover:underline">Products and Services</a></li>
                         <li><a href="{{ route('contact') }}" class="text-sm text-white/80 hover:text-white transition hover:underline">Contact</a></li>
                         <li><button onclick="openInquiryModal()" type="button" class="text-sm text-white/80 hover:text-white transition cursor-pointer hover:underline">Trade Inquiry</button></li>
                     </ul>
