@@ -1,15 +1,15 @@
 @extends('frontend.layout.master')
 
-@section('title', 'Our Collections & Handcrafted Goods - ' . ($siteSettings['site_name'] ?? 'Sundry Blossom'))
+@section('title', 'Products and Services - ' . ($siteSettings['site_name'] ?? 'Sundry Blossom'))
 
-@section('meta_description', 'Browse Sundry Blossom handcrafted collections. Discover sustainable textiles, natural fiber crafts, and ethically sourced goods from artisan communities.')
-@section('og_title', 'Our Collections & Handcrafted Goods | ' . ($siteSettings['site_name'] ?? 'Sundry Blossom'))
+@section('meta_description', 'Browse Sundry Blossom products and services. Discover sustainable textiles, natural fiber crafts, and ethically sourced goods from artisan communities.')
+@section('og_title', 'Products and Services | ' . ($siteSettings['site_name'] ?? 'Sundry Blossom'))
 @section('og_description', 'Explore our curated collections of handcrafted textiles, home decor, and natural goods.')
 
 @section('content')
 <section class="pt-20 pb-16 sm:pb-20 px-5 sm:px-6 lg:px-10 lg:px-16">
     <div class="max-w-4xl mx-auto">
-        <h1 class="text-2xl sm:text-4xl font-serif italic mb-6 sm:mb-8 text-[#1B3B5A]">Our Collections & Products</h1>
+        <h1 class="text-2xl sm:text-4xl font-serif italic mb-6 sm:mb-8 text-[#1B3B5A]">Products and Services</h1>
         <div class="space-y-4">
             @forelse($products as $product)
             <a href="{{ route('products.show', $product->slug) }}" class="block group">

@@ -26,7 +26,7 @@
 
         <div class="mt-8 text-center">
             <a href="{{ route('products.index') }}" class="inline-flex items-center gap-2 bg-[#03a8f4] hover:bg-[#0284c7] text-white px-5 sm:px-6 py-2.5 rounded-lg font-medium text-xs uppercase tracking-wider transition-colors shadow-sm">
-                View All Products
+                View All Products and Services
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
             </a>
         </div>
