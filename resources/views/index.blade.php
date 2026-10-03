@@ -1,6 +1,10 @@
 @extends('frontend.layout.master')
 
-@section('title', 'Sundry Blossom - Handcrafted & Sustainable Goods')
+@section('title', 'Sundry Blossom')
+
+@section('meta_description', 'Sundry Blossom | Import Export Agency')
+@section('og_title', 'Sundry Blossom')
+@section('og_description', 'Sundry Blossom | Import Export Agency')
 
 @section('bg')
     <div class="w-full h-full">
