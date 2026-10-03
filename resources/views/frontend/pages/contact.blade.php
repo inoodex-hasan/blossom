@@ -215,19 +215,14 @@
                 })
                 .then(function(result) {
                     if (result.ok) {
-                        var successMsg = result.body.message || 'Thank you! Your message has been sent successfully.';
                         if (feedback) {
-                            feedback.textContent = successMsg;
-                            feedback.className = 'mb-4 p-3 rounded-lg text-sm font-medium bg-emerald-50 text-emerald-800 border border-emerald-200';
-                            feedback.classList.remove('hidden');
+                            feedback.classList.add('hidden');
+                            feedback.className = 'hidden mb-4 p-3 rounded-lg text-sm font-medium';
                         }
                         form.reset();
 
-                        if (window.showSuccessAlert) {
-                            window.showSuccessAlert('Message Sent Successfully!', successMsg);
-                        }
                         if (window.showToast) {
-                            window.showToast('Message Delivered', 'We will respond within 24 hours.', 'success');
+                            window.showToast('Message Sent Successfully', null, 'success');
                         }
                     } else {
                         var errorMsg = result.body.message || 'An error occurred. Please check the fields and try again.';

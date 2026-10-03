@@ -197,19 +197,20 @@
         // SweetAlert2 Toast Notification
         window.showToast = function(title, message, icon) {
             icon = icon || 'success';
+            var isSuccess = (icon === 'success');
             var Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
                 showConfirmButton: false,
                 timer: 4500,
-                timerProgressBar: true,
-                background: '#ffffff',
-                color: '#1B3B5A',
-                iconColor: icon === 'success' ? '#10B981' : (icon === 'warning' ? '#F59E0B' : '#EF4444'),
+                timerProgressBar: false,
+                background: isSuccess ? '#22C55E' : '#ffffff',
+                color: isSuccess ? '#ffffff' : '#1B3B5A',
+                iconColor: icon === 'warning' ? '#F59E0B' : '#EF4444',
                 customClass: {
-                    popup: 'rounded-2xl shadow-2xl border border-slate-100 p-4',
-                    title: 'text-sm font-bold font-serif text-[#1B3B5A]',
-                    htmlContainer: 'text-xs text-slate-500 font-sans'
+                    popup: 'rounded-md px-3.5 py-2.5 shadow-none border-0 max-w-[320px] text-left',
+                    title: 'text-xs font-semibold font-sans leading-snug',
+                    htmlContainer: 'text-[11px] font-sans leading-snug opacity-90'
                 },
                 didOpen: function(toast) {
                     toast.addEventListener('mouseenter', Swal.stopTimer);
@@ -218,9 +219,11 @@
             });
 
             Toast.fire({
-                icon: icon,
-                title: title,
-                text: message
+                icon: isSuccess ? false : icon,
+                title: isSuccess
+                    ? '<span style="display:inline-flex;align-items:center;gap:8px;"><span style="width:16px;height:16px;border-radius:50%;background:#ffffff;color:#16a34a;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">\u2713;</span>' + title + '</span>'
+                    : title,
+                text: message || undefined
             });
         };
 
