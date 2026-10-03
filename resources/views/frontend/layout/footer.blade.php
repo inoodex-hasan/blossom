@@ -19,8 +19,8 @@
                 <div>
                     <h3 class="text-xs font-bold tracking-wider text-white/50 uppercase">Email us</h3>
                     <p class="mt-1 text-sm text-white/80">
-                        <a href="mailto:{{ $siteSettings['contact_email'] ?? 'sunny@sundryblossom.com.au' }}" class="hover:underline">
-                            {{ $siteSettings['contact_email'] ?? 'sunny@sundryblossom.com.au' }}
+                        <a href="mailto:{{ !empty($siteSettings['contact_email']) ? $siteSettings['contact_email'] : 'sunny@sundryblossom.com.au' }}" class="hover:underline">
+                            {{ !empty($siteSettings['contact_email']) ? $siteSettings['contact_email'] : 'sunny@sundryblossom.com.au' }}
                         </a>
                     </p>
                 </div>
