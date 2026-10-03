@@ -61,7 +61,7 @@
                         <div>
                             <h3 class="text-[12px] font-bold font-serif tracking-wider text-[#1B3B5A] uppercase">Email Us</h3>
                             <p class="text-sm font-normal text-[#1B3B5A] mt-1">
-                                <a href="mailto:{{ !empty($siteSettings['contact_email']) ? $siteSettings['contact_email'] : 'sunny@sundryblossom.com.au' }}" class="hover:underline">
+                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ rawurlencode(!empty($siteSettings['contact_email']) ? $siteSettings['contact_email'] : 'sunny@sundryblossom.com.au') }}" target="_blank" rel="noopener" class="hover:underline">
                                     {{ !empty($siteSettings['contact_email']) ? $siteSettings['contact_email'] : 'sunny@sundryblossom.com.au' }}
                                 </a>
                             </p>
