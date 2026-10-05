@@ -41,8 +41,8 @@
                         <div>
                             <h3 class="text-[12px] font-bold font-serif tracking-wider text-[#1B3B5A] uppercase">Call Us</h3>
                             <p class="text-sm font-normal text-[#1B3B5A] mt-1">
-                                <a href="tel:{{ $siteSettings['contact_phone'] ?? '+8804767775689' }}" class="hover:underline">
-                                    {{ $siteSettings['contact_phone'] ?? '+880 4767 775689' }}
+                                <a href="tel:{{ $siteSettings['contact_phone'] ?? '+61485687225' }}" class="hover:underline">
+                                    {{ $siteSettings['contact_phone_display'] ?? ($siteSettings['contact_phone'] ?? '+61485687225') }}
                                 </a>
                             </p>
                             {{-- <p class="text-xs text-slate-400 mt-0.5">{{ $siteSettings['contact_hours'] ?? 'Mon - Fri, 9am - 6pm' }}</p> --}}
@@ -79,11 +79,8 @@
                         <div>
                             <h3 class="text-[12px] font-bold font-serif tracking-wider text-[#1B3B5A] uppercase">Address</h3>
                             <p class="text-sm font-normal text-[#1B3B5A] mt-1">
-                                <a href="" class="hover:underline">
-                                  New York, NY 10001
-                                </a>
+                                South Australia, AUSTRALIA
                             </p>
-                            <p class="text-xs text-slate-400 mt-0.5"></p>
                         </div>
                     </div>
                 </div>
@@ -121,7 +118,7 @@
 
                         <div id="contact-feedback" class="hidden mb-4 p-3 rounded-lg text-sm font-medium"></div>
 
-                        <form id="contact-form" action="{{ route('contact.store') }}" method="POST" class="space-y-4">
+                        <form id="contact-form" action="{{ route('contact.store') }}" method="POST" class="space-y-4 notranslate" translate="no">
                             @csrf
                             @honeypot
 

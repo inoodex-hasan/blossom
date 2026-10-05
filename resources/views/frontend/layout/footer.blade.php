@@ -11,8 +11,8 @@
                 <div>
                     <h3 class="text-xs font-bold tracking-wider text-white/50 uppercase">call us </h3>
                     <p class="mt-1 text-sm text-white/80">
-                        <a href="tel:{{ $siteSettings['contact_phone'] ?? '+8804767775689' }}" class="hover:underline">
-                            {{ $siteSettings['contact_phone_display'] ?? ($siteSettings['contact_phone'] ?? '04767775689') }}
+                        <a href="tel:{{ $siteSettings['contact_phone'] ?? '+61485687225' }}" class="hover:underline">
+                            {{ $siteSettings['contact_phone_display'] ?? ($siteSettings['contact_phone'] ?? '+61485687225') }}
                         </a>
                     </p>
                 </div>

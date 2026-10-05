@@ -1,7 +1,7 @@
 <!-- Products Section -->
 <section id="projects" class="pt-4 sm:pt-6 pb-16 sm:pb-24 px-5 sm:px-10 lg:px-16">
     <div class="max-w-4xl mx-auto">
-        <h2 class="text-2xl sm:text-3xl font-serif italic text-[#1B3B5A] mb-6 sm:mb-8">Our products</h2>
+        <h2 class="text-2xl sm:text-3xl font-serif italic text-[#1B3B5A] mb-6 sm:mb-8">Our Products and Services</h2>
 
         <div class="space-y-3 sm:space-y-4">
             @forelse($products as $product)

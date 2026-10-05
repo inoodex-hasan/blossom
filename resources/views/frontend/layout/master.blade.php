@@ -53,6 +53,8 @@
             font-family: 'Hind Siliguri', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             padding-top: 56px;
         }
+        html { scroll-padding-top: 72px; }
+        input, textarea, select { font-size: 16px !important; }
         @media (min-width: 640px) { body { padding-top: 64px; } }
         @media (min-width: 768px) { body { padding-top: 104px; } }
         @media (min-width: 1024px) { body { padding-top: 116px; } }
