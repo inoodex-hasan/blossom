@@ -11,23 +11,23 @@
                 <div>
                     <h3 class="text-xs font-bold tracking-wider text-white/50 uppercase">call us </h3>
                     <p class="mt-1 text-sm text-white/80">
-                        <a href="tel:{{ $siteSettings['contact_phone'] ?? '+61485687225' }}" class="hover:underline">
-                            {{ $siteSettings['contact_phone_display'] ?? ($siteSettings['contact_phone'] ?? '+61485687225') }}
+                        <a href="tel:{{ $siteSettings['contact_phone'] ?? '+8804767775689' }}" class="hover:underline">
+                            {{ $siteSettings['contact_phone_display'] ?? ($siteSettings['contact_phone'] ?? '04767775689') }}
                         </a>
                     </p>
                 </div>
                 <div>
                     <h3 class="text-xs font-bold tracking-wider text-white/50 uppercase">Email us</h3>
                     <p class="mt-1 text-sm text-white/80">
-                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ rawurlencode(!empty($siteSettings['contact_email']) ? $siteSettings['contact_email'] : 'sunny@sundryblossom.com.au') }}" target="_blank" rel="noopener" class="hover:underline">
-                            {{ !empty($siteSettings['contact_email']) ? $siteSettings['contact_email'] : 'sunny@sundryblossom.com.au' }}
+                        <a href="mailto:{{ $siteSettings['contact_email'] ?? 'sundryblossom@gmail.com' }}" class="hover:underline">
+                            {{ $siteSettings['contact_email'] ?? 'sundryblossom@gmail.com' }}
                         </a>
                     </p>
                 </div>
                 <div>
                     <h3 class="text-xs font-bold tracking-wider text-white/50 uppercase">Website</h3>
                     <p class="mt-1 text-sm text-white/80">
-                        <a href="{{ route('home') }}" id="footer-site-name" class="hover:underline notranslate" translate="no">{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}</a>
+                        <a href="{{ route('home') }}" class="hover:underline">{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}</a>
                     </p>
                 </div>
                 <div>
@@ -51,7 +51,7 @@
                     <h3 class="text-xs font-bold tracking-wider text-white/50 uppercase mb-3">Quick Links</h3>
                     <ul class="space-y-2.5">
                         <li><a href="{{ route('our-story') }}" class="text-sm text-white/80 hover:text-white transition hover:underline">Our Story</a></li>
-                        <li><a href="{{ route('products.index') }}" class="text-sm text-white/80 hover:text-white transition hover:underline">Products and Services</a></li>
+                        <li><a href="{{ route('products.index') }}" class="text-sm text-white/80 hover:text-white transition hover:underline">Our Products & Collections</a></li>
                         <li><a href="{{ route('contact') }}" class="text-sm text-white/80 hover:text-white transition hover:underline">Contact</a></li>
                         <li><button onclick="openInquiryModal()" type="button" class="text-sm text-white/80 hover:text-white transition cursor-pointer hover:underline">Trade Inquiry</button></li>
                     </ul>
@@ -61,13 +61,13 @@
     </div>
     <div class="border-t border-white/10 py-5 sm:py-6 px-5 max-w-7xl mx-auto">
         <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p class="text-xs text-white/40">&copy; {{ date('Y') }} <span id="footer-copyright-name" class="notranslate" translate="no">{{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}</span>. All rights reserved.</p>
+            <p class="text-xs text-white/40">&copy; {{ date('Y') }} {{ $siteSettings['site_name'] ?? 'Sundry Blossom' }}. All rights reserved.</p>
             <div class="flex items-center gap-4">
-                <p class="text-xs text-white/40">Developed by <a href="https://inoodex.com/" target="_blank" class="text-white/60 hover:text-white transition underline notranslate" translate="no">Inoodex</a></p>
+                <p class="text-xs text-white/40">Developed by <a href="https://inoodex.com/" target="_blank" class="text-white/60 hover:text-white transition underline">Inoodex</a></p>
             </div>
         </div>
         <div class="flex justify-center mt-4">
-            <button onclick="scrollToTop(event)" class="flex items-center gap-2 text-xs text-white hover:text-white/80 transition cursor-pointer">
+            <button onclick="scrollToTop(event)" class="flex items-center gap-2 text-xs text-white/50 hover:text-white/80 transition cursor-pointer">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
                 <span>Back to top</span>
             </button>
@@ -136,7 +136,9 @@
 
         <div id="modal-feedback" class="hidden mx-5 mt-4 p-3 rounded-lg text-sm font-medium"></div>
 
-        <form id="inquiry-form" class="px-5 sm:px-6 py-4 space-y-3">
+        <form id="inquiry-form" action="{{ route('inquiry.store') }}" method="POST" class="px-5 sm:px-6 py-4 space-y-3">
+            @csrf
+            @honeypot
 
             <!-- Section: Contact details -->
             <div class="bg-[#0EA5E9] text-white font-serif text-xs font-bold tracking-wide px-3 py-1.5 rounded">Contact Details</div>
@@ -216,8 +218,9 @@
                 }
 
                 var formData = new FormData(form);
+                var actionUrl = form.getAttribute('action') || form.action || '{{ route("inquiry.store") }}';
 
-                fetch(form.action, {
+                fetch(actionUrl, {
                     method: 'POST',
                     headers: {
                         'X-Requested-With': 'XMLHttpRequest',
