@@ -1,6 +1,6 @@
 @extends('frontend.layout.master')
 
-@section('title', 'Sundry Blossom')
+@section('title', 'Sundry Blossom l Import Export Agency l Connecting your creation to global sales.')
 
 @section('meta_description', 'Sundry Blossom | Import Export Agency')
 @section('og_title', 'Sundry Blossom')
