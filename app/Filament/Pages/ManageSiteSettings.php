@@ -63,7 +63,7 @@ class ManageSiteSettings extends Page
                                         <img src="' . asset('storage/' . $logo) . '" alt="Brand Logo" class="h-10 w-auto max-w-[120px] object-contain rounded border border-slate-300 dark:border-slate-600 bg-white p-1">
                                         <div class="text-xs">
                                             <span class="font-medium text-slate-700 dark:text-slate-200 block truncate max-w-[180px]">' . e(basename($logo)) . '</span>
-                                            <a href="' . asset('storage/' . $logo) . '" target="_blank" class="text-[11px] text-amber-600 dark:text-amber-400 hover:underline">View original &rarr;</a>
+                                            <a href="' . asset('storage/' . $logo) . '" target="_blank" class="text-[11px] text-sky-600 dark:text-sky-400 hover:underline">View original &rarr;</a>
                                         </div>
                                     </div>
                                 ');
@@ -83,7 +83,7 @@ class ManageSiteSettings extends Page
                                         <img src="' . asset('storage/' . $fav) . '" alt="Favicon" class="w-8 h-8 object-contain rounded border border-slate-300 dark:border-slate-600 bg-white p-0.5">
                                         <div class="text-xs">
                                             <span class="font-medium text-slate-700 dark:text-slate-200 block truncate max-w-[180px]">' . e(basename($fav)) . '</span>
-                                            <a href="' . asset('storage/' . $fav) . '" target="_blank" class="text-[11px] text-amber-600 dark:text-amber-400 hover:underline">View original &rarr;</a>
+                                            <a href="' . asset('storage/' . $fav) . '" target="_blank" class="text-[11px] text-sky-600 dark:text-sky-400 hover:underline">View original &rarr;</a>
                                         </div>
                                     </div>
                                 ');

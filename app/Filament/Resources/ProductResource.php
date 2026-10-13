@@ -70,7 +70,7 @@ class ProductResource extends Resource
                                             <img src="' . e($record->image_url) . '" alt="Current Photo" class="w-10 h-10 rounded-lg object-cover border border-slate-300 dark:border-slate-600 shadow-xs">
                                             <div class="text-xs">
                                                 <span class="font-medium text-slate-700 dark:text-slate-200 block truncate max-w-[220px]">' . e(basename($record->image)) . '</span>
-                                                <a href="' . e($record->image_url) . '" target="_blank" class="text-[11px] text-amber-600 dark:text-amber-400 hover:underline">View original &rarr;</a>
+                                                <a href="' . e($record->image_url) . '" target="_blank" class="text-[11px] text-sky-600 dark:text-sky-400 hover:underline">View original &rarr;</a>
                                             </div>
                                         </div>
                                     ')

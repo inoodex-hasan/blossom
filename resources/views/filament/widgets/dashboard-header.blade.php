@@ -26,7 +26,7 @@
             <!-- Quick Action Shortcuts -->
             <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;">
                 <a href="{{ route('filament.admin.resources.products.create') }}" 
-                   style="display: inline-flex; align-items: center; gap: 0.4rem; background: #F59E0B; color: #ffffff; font-size: 0.8125rem; font-weight: 600; padding: 0.55rem 1rem; border-radius: 0.625rem; text-decoration: none; box-shadow: 0 2px 6px rgba(245, 158, 11, 0.3); transition: all 0.15s ease;">
+                   style="display: inline-flex; align-items: center; gap: 0.4rem; background: #0EA5E9; color: #ffffff; font-size: 0.8125rem; font-weight: 600; padding: 0.55rem 1rem; border-radius: 0.625rem; text-decoration: none; box-shadow: 0 2px 6px rgba(14, 165, 233, 0.3); transition: all 0.15s ease;">
                     <svg style="width: 14px; height: 14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>
                     </svg>
